@@ -1,9 +1,7 @@
-import Alpine from "alpinejs";
-
-// AlpineJS Plugins
-import persist from "@alpinejs/persist"; // @see https://alpinejs.dev/plugins/persist
-import collapse from "@alpinejs/collapse"; // @see https://alpinejs.dev/plugins/collapse
-import intersect from "@alpinejs/intersect"; // @see https://alpinejs.dev/plugins/intersect
+import {
+    Livewire,
+    Alpine,
+} from "../../vendor/livewire/livewire/dist/livewire.esm";
 
 // Third Party Libraries
 
@@ -107,21 +105,20 @@ window.Quill = Quill;
 window.Tom = Tom;
 
 window.Alpine = Alpine;
+window.Livewire = Livewire;
 window.helpers = helpers;
 window.pages = pages;
 
-Alpine.plugin(persist);
-Alpine.plugin(collapse);
-Alpine.plugin(intersect);
+document.addEventListener("alpine:init", () => {
+    Alpine.directive("tooltip", tooltip);
+    Alpine.directive("input-mask", inputMask);
 
-Alpine.directive("tooltip", tooltip);
-Alpine.directive("input-mask", inputMask);
+    Alpine.magic("notification", () => notification);
+    Alpine.magic("clipboard", () => clipboard);
 
-Alpine.magic("notification", () => notification);
-Alpine.magic("clipboard", () => clipboard);
+    Alpine.store("breakpoints", breakpoints);
+    Alpine.store("global", store);
 
-Alpine.store("breakpoints", breakpoints);
-Alpine.store("global", store);
-
-Alpine.data("usePopper", usePopper);
-Alpine.data("accordionItem", accordionItem);
+    Alpine.data("usePopper", usePopper);
+    Alpine.data("accordionItem", accordionItem);
+});

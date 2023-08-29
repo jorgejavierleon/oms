@@ -15,6 +15,8 @@
         @endisset
     </title>
 
+    @livewireStyles
+
     <!-- CSS & JS Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -58,8 +60,10 @@
 -->
     <div id="x-teleport-target"></div>
 
+    @livewireScriptConfig
+
     <script>
-        window.addEventListener("DOMContentLoaded", () => Alpine.start());
+        window.addEventListener("DOMContentLoaded", () => Livewire.start());
     </script>
 
     @isset($script)
