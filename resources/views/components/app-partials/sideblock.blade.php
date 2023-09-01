@@ -64,18 +64,27 @@
                                     </ul>
                                 </li>
                             @else
-                                <li
-                                    @if ($menu['route_name'] === $pageName) x-init="$el.scrollIntoView({block:'center'});" @endif
-                                    class="cursor-pointer select-none items-center gap-1 px-3 rounded-md text-start leading-tight outline-none transition-all hover:bg-slate-100 hover:bg-opacity-80 hover:text-gray-900 focus:bg-slate-100 focus:bg-opacity-80 focus:text-gray-900 active:bg-gray-50 active:bg-opacity-80 active:text-gray-900"
-                                >
-                                    <a href="{{ route($menu['route_name']) }}"
-                                        class="flex items-center gap-2 py-2 tracking-wide outline-none transition-colors duration-300 ease-in-out {{ $menu['route_name'] === $pageName ? 'text-primary dark:text-accent-light font-medium' : 'text-slate-600  hover:text-slate-800 dark:text-navy-200 dark:hover:text-navy-50' }}">
-                                        @isset($menu['icon'])
-                                            <i class="{{ $menu['icon'] }}"></i>
-                                        @endisset
-                                        {{ $menu['title'] }}
-                                    </a>
-                                </li>
+                                @if($menu['route_name'] === $pageName)
+                                    <li x-init="$el.scrollIntoView({block:'center'});">
+                                        <a href="{{ route($menu['route_name']) }}"
+                                           class="flex items-center gap-2 rounded-md bg-gradient-to-l from-indigo-400 to-indigo-600 px-4 py-2 tracking-wide text-white outline-none transition-all">
+                                            @isset($menu['icon'])
+                                                <i class="{{ $menu['icon'] }}"></i>
+                                            @endisset
+                                            {{ $menu['title'] }}
+                                        </a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{ route($menu['route_name']) }}"
+                                           class="group flex space-x-2 rounded-md px-4 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">
+                                            @isset($menu['icon'])
+                                                <i class="{{ $menu['icon'] }}"></i>
+                                            @endisset
+                                            {{ $menu['title'] }}
+                                        </a>
+                                    </li>
+                                @endif
                             @endif
                         @endforeach
                     </ul>
