@@ -21,18 +21,20 @@
                 @if ($key > 0)
                     <div class="my-3 mx-4 h-px bg-slate-200 dark:bg-navy-500"></div>
                 @endif
-                <h1 class="py-2 font-medium text-xs uppercase mx-4 text-slate-800 dark:text-navy-50">
+                <h1 class="py-2 font-medium text-xs uppercase mx-4 text-gray-400 dark:text-navy-50">
                     {{ $menuItemsGroup['title'] }}
                 </h1>
                 @foreach ($menuItemsGroup['items'] as $menuItems)
-                    <ul class="flex flex-1 flex-col px-4 font-inter">
+                    <ul class="flex flex-1 flex-col px-4 font-inter gap-3">
                         @foreach ($menuItems as $keyMenu => $menu)
                             @if (isset($menu['submenu']))
-                                <li x-data="accordionItem('{{ $keyMenu }}')">
-                                    <a :class="expanded ? 'text-slate-800 font-semibold dark:text-navy-50' :
+                                <li x-data="accordionItem('{{ $keyMenu }}')"
+                                    class="cursor-pointer select-none items-center rounded-md text-start leading-tight outline-none transition-all hover:bg-slate-100 hover:bg-opacity-80 hover:text-gray-900 focus:bg-slate-100 focus:bg-opacity-80 focus:text-gray-900 active:bg-gray-50 active:bg-opacity-80 active:text-gray-900"
+                                >
+                                    <a :class="expanded ? 'bg-slate-150 dark:bg-accent-light rounded-md' :
                                         'text-slate-600 dark:text-navy-200'"
                                         @click="expanded = !expanded"
-                                        class="flex items-center justify-between py-2 text-xs+ tracking-wide  outline-none transition-[color,padding-left] duration-300 ease-in-out hover:text-slate-800  dark:hover:text-navy-50"
+                                        class="flex items-center justify-between px-3 py-2 tracking-wide  outline-none transition-[color,padding-left] duration-300 ease-in-out hover:text-slate-800  dark:hover:text-navy-50"
                                         href="javascript:void(0);">
                                         <span>{{ $menu['title'] }}</span>
                                         <svg :class="expanded && 'rotate-90'" xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +49,7 @@
                                             <li
                                                 @if ($submenu['route_name'] === $pageName) x-init="$el.scrollIntoView({block:'center'}); expanded = true" @endif>
                                                 <a href="{{ route($submenu['route_name']) }}"
-                                                    class="flex items-center justify-between p-2 text-xs+ tracking-wide
+                                                    class="flex items-center justify-between p-3 tracking-wide
                                              outline-none transition-[color,padding-left] duration-300 ease-in-out hover:pl-4
                                              {{ $submenu['route_name'] === $pageName ? 'text-primary dark:text-accent-light font-medium' : 'text-slate-600 hover:text-slate-800 dark:text-navy-200 dark:hover:text-navy-50' }}">
                                                     <div class="flex items-center space-x-2">
@@ -63,9 +65,14 @@
                                 </li>
                             @else
                                 <li
-                                    @if ($menu['route_name'] === $pageName) x-init="$el.scrollIntoView({block:'center'});" @endif>
+                                    @if ($menu['route_name'] === $pageName) x-init="$el.scrollIntoView({block:'center'});" @endif
+                                    class="cursor-pointer select-none items-center gap-1 px-3 rounded-md text-start leading-tight outline-none transition-all hover:bg-slate-100 hover:bg-opacity-80 hover:text-gray-900 focus:bg-slate-100 focus:bg-opacity-80 focus:text-gray-900 active:bg-gray-50 active:bg-opacity-80 active:text-gray-900"
+                                >
                                     <a href="{{ route($menu['route_name']) }}"
-                                        class="flex text-xs+ py-2  tracking-wide outline-none transition-colors duration-300 ease-in-out {{ $menu['route_name'] === $pageName ? 'text-primary dark:text-accent-light font-medium' : 'text-slate-600  hover:text-slate-800 dark:text-navy-200 dark:hover:text-navy-50' }}">
+                                        class="flex items-center gap-2 py-2 tracking-wide outline-none transition-colors duration-300 ease-in-out {{ $menu['route_name'] === $pageName ? 'text-primary dark:text-accent-light font-medium' : 'text-slate-600  hover:text-slate-800 dark:text-navy-200 dark:hover:text-navy-50' }}">
+                                        @isset($menu['icon'])
+                                            <i class="{{ $menu['icon'] }}"></i>
+                                        @endisset
                                         {{ $menu['title'] }}
                                     </a>
                                 </li>

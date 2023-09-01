@@ -672,7 +672,32 @@ class SidebarPanel
         ];
     }
 
-    public static function all(){
-        return [self::dashboards(),self::apps(), self::layouts(), self::forms(), self::components(), self::elements()];
+    public static function meetings(): array
+    {
+        return [
+            'title' => 'Meetings',
+            'items' => [
+                [
+                    'one_on_one' => [
+                        'title' => 'One on One',
+                        'route_name' => 'meetings/one-on-one',
+                        'icon' => 'fa fa-user-group',
+                    ],
+                ],
+            ]
+        ];
+    }
+
+    public static function all(): array
+    {
+        return [
+            self::meetings(),
+            self::dashboards(),
+            self::apps(),
+            self::layouts(),
+            self::forms(),
+            self::components(),
+            self::elements()
+        ];
     }
 }
