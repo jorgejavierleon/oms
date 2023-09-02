@@ -162,4 +162,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboards/widget-contacts', [PagesController::class, 'dashboardsWidgetContacts'])->name('dashboards/widget-contacts');
 
     Route::get('/meetings/one-on-one', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('meetings/one-on-one');
+    Route::get('/organization/employees', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization/employees');
+    Route::get('/organization/positions', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization/positions');
+    Route::get('/organization/teams', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization/teams');
 });

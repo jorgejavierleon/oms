@@ -688,10 +688,41 @@ class SidebarPanel
         ];
     }
 
+    public static function organization(): array
+    {
+        return [
+            'title' => 'Organization',
+            'items' => [
+                [
+                    'employees' => [
+                        'title' => 'Employees',
+                        'route_name' => 'organization/employees',
+                        'icon' => 'fa fa-building-user',
+                    ],
+                ],
+                [
+                    'positions' => [
+                        'title' => 'Positions',
+                        'route_name' => 'organization/positions',
+                        'icon' => 'fa fa-id-card',
+                    ],
+                ],
+                [
+                    'teams' => [
+                        'title' => 'Teams',
+                        'route_name' => 'organization/teams',
+                        'icon' => 'fa fa-users-line',
+                    ],
+                ],
+            ]
+        ];
+    }
+
     public static function all(): array
     {
         return [
             self::meetings(),
+            self::organization(),
             self::dashboards(),
             self::apps(),
             self::layouts(),

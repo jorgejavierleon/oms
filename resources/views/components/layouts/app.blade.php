@@ -61,7 +61,9 @@
         <!-- Right Sidebar -->
         <x-app-partials.right-sidebar></x-app-partials.right-sidebar>
 
-        {{ $slot }}
+        <main class="main-content w-full px-[var(--margin-x)] pb-8">
+            {{ $slot }}
+        </main>
 
     </div>
 

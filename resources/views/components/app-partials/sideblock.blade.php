@@ -25,7 +25,7 @@
                     {{ $menuItemsGroup['title'] }}
                 </h1>
                 @foreach ($menuItemsGroup['items'] as $menuItems)
-                    <ul class="flex flex-1 flex-col px-4 font-inter gap-3">
+                    <ul class="flex flex-1 flex-col px-4 font-inter gap-1">
                         @foreach ($menuItems as $keyMenu => $menu)
                             @if (isset($menu['submenu']))
                                 <li x-data="accordionItem('{{ $keyMenu }}')"
@@ -67,7 +67,7 @@
                                 @if($menu['route_name'] === $pageName)
                                     <li x-init="$el.scrollIntoView({block:'center'});">
                                         <a href="{{ route($menu['route_name']) }}"
-                                           class="flex items-center gap-2 rounded-md bg-gradient-to-l from-indigo-400 to-indigo-600 px-4 py-2 tracking-wide text-white outline-none transition-all">
+                                           class="flex items-center gap-2 rounded-md opacity-80 font-medium bg-gradient-to-l from-indigo-400 to-indigo-600 px-4 py-2 tracking-wide text-white outline-none transition-all">
                                             @isset($menu['icon'])
                                                 <i class="{{ $menu['icon'] }}"></i>
                                             @endisset
@@ -77,7 +77,7 @@
                                 @else
                                     <li>
                                         <a href="{{ route($menu['route_name']) }}"
-                                           class="group flex space-x-2 rounded-md px-4 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">
+                                           class="flex items-center gap-2 rounded-md px-4 py-2 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600">
                                             @isset($menu['icon'])
                                                 <i class="{{ $menu['icon'] }}"></i>
                                             @endisset
