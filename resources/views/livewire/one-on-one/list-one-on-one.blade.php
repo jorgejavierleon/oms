@@ -1,9 +1,5 @@
 <div>
-    <div class="flex items-center space-x-4 py-5 lg:py-8">
-        <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            One on Ones
-        </h2>
-    </div>
+    <x-page-title title="One on One" />
     <div x-data="{activeTab:'tabHome'}" class="tabs flex flex-col">
         <div class="is-scrollbar-hidden overflow-x-auto">
             <div class="border-b-2 border-slate-150 dark:border-navy-500">

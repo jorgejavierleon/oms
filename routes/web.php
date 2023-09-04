@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PagesController;
-use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +23,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
-    Route::get('/', [PagesController::class, 'dashboardsCrmAnalytics'])->name('index');
 
     Route::get('/elements/avatar', [PagesController::class, 'elementsAvatar'])->name('elements/avatar');
     Route::get('/elements/alert', [PagesController::class, 'elementsAlert'])->name('elements/alert');
@@ -161,8 +159,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboards/widget-ui', [PagesController::class, 'dashboardsWidgetUi'])->name('dashboards/widget-ui');
     Route::get('/dashboards/widget-contacts', [PagesController::class, 'dashboardsWidgetContacts'])->name('dashboards/widget-contacts');
 
+    Route::redirect('/', '/meetings/one-on-one')->name('index');
     Route::get('/meetings/one-on-one', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('meetings/one-on-one');
-    Route::get('/organization/employees', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization/employees');
+    Route::get('/organization/employees', \App\Livewire\Employee\EmployeeList::class)->name('organization/employees');
     Route::get('/organization/positions', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization/positions');
     Route::get('/organization/teams', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization/teams');
 });
