@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @mixin IdeHelperActionItem
@@ -43,18 +42,21 @@ class ActionItem extends Model
     {
         $today = Carbon::today();
         $nextWeek = Carbon::today()->addWeek();
+
         return $this->due_date->between($today, $nextWeek);
     }
 
     public function isDueInTheFuture(): bool
     {
         $nextWeek = Carbon::today()->addWeek();
+
         return $this->due_date->gt($nextWeek);
     }
 
     public function isOverDue(): bool
     {
         $today = Carbon::today();
+
         return $this->due_date->lt($today);
     }
 
@@ -74,5 +76,4 @@ class ActionItem extends Model
 
         return 'gray';
     }
-
 }

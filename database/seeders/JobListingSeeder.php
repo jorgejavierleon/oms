@@ -7,7 +7,6 @@ use App\Models\Candidate;
 use App\Models\CandidateStatus;
 use App\Models\JobListing;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class JobListingSeeder extends Seeder

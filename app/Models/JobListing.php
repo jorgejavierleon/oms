@@ -19,7 +19,7 @@ class JobListing extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'status' => JobListingStatus::class
+        'status' => JobListingStatus::class,
     ];
 
     public function recruiters(): BelongsToMany

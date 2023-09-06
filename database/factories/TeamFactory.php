@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,6 +28,7 @@ class TeamFactory extends Factory
             'Sales',
             'Training',
         ];
+
         return [
             'name' => $this->faker->randomElement($teams),
             'description' => $this->faker->sentence,

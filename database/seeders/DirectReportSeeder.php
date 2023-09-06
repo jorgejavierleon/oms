@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\DirectReport;
 use App\Models\Team;
 use Illuminate\Database\Seeder;
 

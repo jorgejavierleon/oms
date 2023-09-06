@@ -33,7 +33,7 @@ class TeamSeeder extends Seeder
         $teams->each(function ($team) {
             Team::factory()->create([
                 'name' => $team,
-                'leader_id' => null
+                'leader_id' => null,
             ]);
         });
     }

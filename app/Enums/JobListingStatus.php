@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum JobListingStatus : int
+enum JobListingStatus: int
 {
     case OPEN = 1;
     case CLOSED = 2;

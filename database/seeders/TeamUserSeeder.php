@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Team;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TeamUserSeeder extends Seeder
@@ -21,7 +20,7 @@ class TeamUserSeeder extends Seeder
             );
         }
         $teams->each(function ($team) {
-            if (!$team->users->count()) {
+            if (! $team->users->count()) {
                 return;
             }
             $team->leader_id = $team->users->random()->id;

@@ -23,6 +23,7 @@ class Meeting extends Model
     ];
 
     public const ONE_ON_ONE_TYPE = 'one_on_one';
+
     public const GENERAL_TYPE = 'general';
 
     public function participants(): BelongsToMany

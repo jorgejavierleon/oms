@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Constants\TailwindColorsConstants;
 use App\Models\JobListing;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

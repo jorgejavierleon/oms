@@ -22,7 +22,7 @@ class JobListingFactory extends Factory
             'description' => $this->faker->optional(0.8)->paragraph,
             'internal_id' => $this->faker->randomNumber(6),
             'team_id' => null,
-            'status' => JobListingStatus::OPEN
+            'status' => JobListingStatus::OPEN,
         ];
     }
 }

@@ -14,10 +14,11 @@ class UserFactory extends Factory
     {
         $firstName = $this->faker->firstName();
         $lastName = $this->faker->lastName();
-        $trigram = Str::upper(Str::substr($firstName, 0, 1) . Str::substr($lastName, 0, 2));
+        $trigram = Str::upper(Str::substr($firstName, 0, 1).Str::substr($lastName, 0, 2));
+
         return [
             'position_id' => null,
-            'name' =>  $firstName . ' ' . $lastName,
+            'name' => $firstName.' '.$lastName,
             'email' => fake()->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber,
             'trigram' => $trigram,
