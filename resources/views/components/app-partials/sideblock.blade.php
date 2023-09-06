@@ -66,7 +66,7 @@
                             @else
                                 @if($menu['route_name'] === $pageName)
                                     <li x-init="$el.scrollIntoView({block:'center'});">
-                                        <a href="{{ route($menu['route_name']) }}"
+                                        <a href="#"
                                            class="flex items-center gap-2 rounded-md opacity-80 font-medium bg-gradient-to-l from-indigo-400 to-indigo-600 px-4 py-2 tracking-wide text-white outline-none transition-all">
                                             @isset($menu['icon'])
                                                 <i class="{{ $menu['icon'] }}"></i>
