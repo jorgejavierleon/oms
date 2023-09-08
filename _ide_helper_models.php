@@ -14,7 +14,6 @@ namespace App\Models{
 /**
  * App\Models\ActionItem
  *
- * @mixin IdeHelperActionItem
  * @property int $id
  * @property string $description
  * @property int $is_completed
@@ -44,15 +43,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ActionItem whereResponsableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ActionItem whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ActionItem whereWontDo($value)
+ * @mixin \Eloquent
  */
-	class ActionItem extends \Eloquent {}
+	class IdeHelperActionItem {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Candidate
  *
- * @mixin IdeHelperCandidate
  * @property int $id
  * @property int|null $job_listing_id
  * @property string $name
@@ -97,15 +96,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereTwitter($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereWebsite($value)
+ * @mixin \Eloquent
  */
-	class Candidate extends \Eloquent {}
+	class IdeHelperCandidate {}
 }
 
 namespace App\Models{
 /**
  * App\Models\CandidateStatus
  *
- * @mixin IdeHelperCandidateStatus
  * @property int $id
  * @property string $name
  * @property string $color
@@ -129,15 +128,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateStatus whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateStatus whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateStatus whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class CandidateStatus extends \Eloquent {}
+	class IdeHelperCandidateStatus {}
 }
 
 namespace App\Models{
 /**
  * App\Models\JobListing
  *
- * @mixin IdeHelperJobListing
  * @property int $id
  * @property string $title
  * @property string|null $description
@@ -167,15 +166,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|JobListing whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobListing whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobListing whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class JobListing extends \Eloquent {}
+	class IdeHelperJobListing {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Meeting
  *
- * @mixin IdeHelperMeeting
  * @property int $id
  * @property string $meeting_type
  * @property string|null $title
@@ -209,15 +208,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Meeting whereStartAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meeting whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meeting whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Meeting extends \Eloquent {}
+	class IdeHelperMeeting {}
 }
 
 namespace App\Models{
 /**
  * App\Models\MeetingTemplate
  *
- * @mixin IdeHelperMeetingTemplate
  * @property int $id
  * @property int $user_id
  * @property string $scope
@@ -239,15 +238,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|MeetingTemplate whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetingTemplate whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetingTemplate whereUserId($value)
+ * @mixin \Eloquent
  */
-	class MeetingTemplate extends \Eloquent {}
+	class IdeHelperMeetingTemplate {}
 }
 
 namespace App\Models{
 /**
  * App\Models\MeetingTemplateItem
  *
- * @mixin IdeHelperMeetingTemplateItem
  * @property int $id
  * @property int $meeting_template_id
  * @property string|null $description
@@ -264,15 +263,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|MeetingTemplateItem whereMeetingTemplateId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetingTemplateItem whereOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetingTemplateItem whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class MeetingTemplateItem extends \Eloquent {}
+	class IdeHelperMeetingTemplateItem {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Note
  *
- * @mixin IdeHelperNote
  * @property int $id
  * @property string $content
  * @property int|null $user_id
@@ -295,15 +294,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereUserName($value)
+ * @mixin \Eloquent
  */
-	class Note extends \Eloquent {}
+	class IdeHelperNote {}
 }
 
 namespace App\Models{
 /**
  * App\Models\OneOnOneSuggestion
  *
- * @mixin IdeHelperOneOnOneSuggestion
  * @property int $id
  * @property string $description
  * @property int $uses
@@ -319,28 +318,28 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OneOnOneSuggestion whereLocale($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OneOnOneSuggestion whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OneOnOneSuggestion whereUses($value)
+ * @mixin \Eloquent
  */
-	class OneOnOneSuggestion extends \Eloquent {}
+	class IdeHelperOneOnOneSuggestion {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Organization
  *
- * @mixin IdeHelperOrganization
  * @method static \Database\Factories\OrganizationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Organization newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Organization newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Organization query()
+ * @mixin \Eloquent
  */
-	class Organization extends \Eloquent {}
+	class IdeHelperOrganization {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Pipeline
  *
- * @mixin IdeHelperPipeline
  * @property int $id
  * @property string $name
  * @property int $is_default
@@ -357,15 +356,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Pipeline whereIsDefault($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pipeline whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pipeline whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Pipeline extends \Eloquent {}
+	class IdeHelperPipeline {}
 }
 
 namespace App\Models{
 /**
  * App\Models\PipelineStatus
  *
- * @mixin IdeHelperPipelineStatus
  * @property int $id
  * @property int $pipeline_id
  * @property string $name
@@ -387,15 +386,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|PipelineStatus whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PipelineStatus wherePipelineId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PipelineStatus whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class PipelineStatus extends \Eloquent {}
+	class IdeHelperPipelineStatus {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Position
  *
- * @mixin IdeHelperPosition
  * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -410,15 +409,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Position whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Position whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Position whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Position extends \Eloquent {}
+	class IdeHelperPosition {}
 }
 
 namespace App\Models{
 /**
  * App\Models\TalkingPoint
  *
- * @mixin IdeHelperTalkingPoint
  * @property int $id
  * @property int $meeting_id
  * @property string $description
@@ -440,15 +439,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|TalkingPoint whereMeetingId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TalkingPoint whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TalkingPoint whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class TalkingPoint extends \Eloquent {}
+	class IdeHelperTalkingPoint {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Team
  *
- * @mixin IdeHelperTeam
  * @property int $id
  * @property int|null $leader_id
  * @property string|null $description
@@ -468,15 +467,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereLeaderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Team extends \Eloquent {}
+	class IdeHelperTeam {}
 }
 
 namespace App\Models{
 /**
  * App\Models\User
  *
- * @mixin IdeHelperUser
  * @property int $id
  * @property string $name
  * @property int|null $position_id
@@ -545,7 +544,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
+ * @mixin \Eloquent
  */
-	class User extends \Eloquent {}
+	class IdeHelperUser {}
 }
 

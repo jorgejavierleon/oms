@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Employee;
 
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,6 +15,8 @@ class EmployeeList extends Component
     #[Title('Employees')]
     public function render(): View
     {
-        return view('livewire.employee.employee-list');
+        return view('livewire.employee.employee-list', [
+            'users' => User::paginate(10),
+        ]);
     }
 }
