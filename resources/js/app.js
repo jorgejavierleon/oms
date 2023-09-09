@@ -18,6 +18,7 @@ import SimpleBar from "simplebar";
 */
 import hljs from "highlight.js/lib/core";
 import xml from "highlight.js/lib/languages/xml";
+import javascript from 'highlight.js/lib/languages/javascript';
 
 /*
     Date Utility Library
@@ -87,6 +88,7 @@ import clipboard from "./magics/clipboard";
 // Register HTML, XML language for highlight.js
 // Just for demo purpose only for highlighting code
 hljs.registerLanguage("xml", xml);
+hljs.registerLanguage('sql', javascript);
 hljs.configure({ ignoreUnescapedHTML: true });
 
 // Register plugin image preview for filepond
