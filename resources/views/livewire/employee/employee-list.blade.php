@@ -47,8 +47,8 @@
                         <thead>
                             <tr>
                                 <x-table.th class="rounded-tl-lg">Employee</x-table.th>
-                                <x-table.th>Email</x-table.th>
                                 <x-table.th>Position</x-table.th>
+                                <x-table.th>Teams</x-table.th>
                                 <x-table.th>Status</x-table.th>
                                 <x-table.th class="rounded-tr-lg">Action</x-table.th>
                             </tr>
@@ -58,9 +58,7 @@
                                 <tr
                                     class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500"
                                 >
-                                    <td
-                                        class="whitespace-nowrap px-4 py-3 sm:px-5"
-                                    >
+                                    <x-table.td>
                                         <div class="flex items-center gap-3">
                                             <div class="avatar flex">
                                                 <img
@@ -69,28 +67,39 @@
                                                     alt="avatar"
                                                 />
                                             </div>
-                                            <span class="font-medium text-slate-600 dark:text-navy-100">
-                                                {{ $user->name }}
-                                            </span>
+                                            <div class="flex flex-col gap-1">
+                                                <span class="font-medium text-slate-600 dark:text-navy-100">
+                                                    {{ $user->name }}
+                                                </span>
+                                                <small class="text-xs">
+                                                    {{ $user->email }}
+                                                </small>
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                                        {{ $user->email }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-3 lg:px-5">
+                                    </x-table.td>
+                                    <x-table.td>
                                         {{ $user->position->name }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                                    </x-table.td>
+                                    <x-table.td>
+                                        <div class="flex space-x-2">
+                                            @foreach($user->teams as $team)
+                                                <div class="badge rounded-full border">
+                                                    {{ $team->name }}
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </x-table.td>
+                                    <x-table.td>
                                         <label class="inline-flex items-center">
                                             <input
                                                 class="form-switch h-5 w-10 rounded-full bg-slate-300 before:rounded-full before:bg-slate-50 checked:bg-primary checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-accent dark:checked:before:bg-white"
                                                 type="checkbox"
                                             />
                                         </label>
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                                    </x-table.td>
+                                    <x-table.td>
 
-                                    </td>
+                                    </x-table.td>
                                 </tr>
                             @endforeach
                         </tbody>
