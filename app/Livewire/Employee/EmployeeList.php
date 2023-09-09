@@ -12,11 +12,14 @@ class EmployeeList extends Component
 {
     use WithPagination;
 
+    public string $search = '';
+
     #[Title('Employees')]
     public function render(): View
     {
+        $users = User::search($this->search)->paginate(10);
         return view('livewire.employee.employee-list', [
-            'users' => User::paginate(10),
+            'users' => $users,
         ]);
     }
 }
