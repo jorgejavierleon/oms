@@ -98,7 +98,14 @@
                                         </label>
                                     </x-table.td>
                                     <x-table.td>
-
+                                        <div class="flex gap-4 items-center text-lg font-light text-slate-400">
+                                            <a href="#">
+                                                <i class="fa fa-magnifying-glass"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="fa fa-pen-to-square"></i>
+                                            </a>
+                                        </div>
                                     </x-table.td>
                                 </tr>
                             @endforeach
