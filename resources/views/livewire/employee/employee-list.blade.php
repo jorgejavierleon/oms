@@ -21,20 +21,7 @@
                             @click="isInputActive = !isInputActive"
                             class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-4.5 w-4.5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.5"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg>
+                            <x-heroicon-o-magnifying-glass />
                         </button>
                     </div>
                 </div>
@@ -68,9 +55,13 @@
                                                 />
                                             </div>
                                             <div class="flex flex-col gap-1">
-                                                <span class="font-medium text-slate-600 dark:text-navy-100">
+                                                <x-general.link
+                                                    href="/employees/{{ $user->id }}"
+                                                    wire:navigate
+                                                    class="font-medium text-slate-600 dark:text-navy-100"
+                                                >
                                                     {{ $user->name }}
-                                                </span>
+                                                </x-general.link>
                                                 <small class="text-xs">
                                                     {{ $user->email }}
                                                 </small>
@@ -98,13 +89,13 @@
                                         </label>
                                     </x-table.td>
                                     <x-table.td>
-                                        <div class="flex gap-4 items-center text-lg font-light text-slate-400">
-                                            <a href="#">
-                                                <i class="fa fa-magnifying-glass"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-pen-to-square"></i>
-                                            </a>
+                                        <div class="flex gap-4 items-center font-light">
+                                            <x-general.link href="#">
+                                                <x-heroicon-o-magnifying-glass />
+                                            </x-general.link>
+                                            <x-general.link href="#">
+                                                <x-heroicon-o-pencil-square />
+                                            </x-general.link>
                                         </div>
                                     </x-table.td>
                                 </tr>

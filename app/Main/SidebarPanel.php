@@ -679,7 +679,7 @@ class SidebarPanel
                 [
                     'one_on_one' => [
                         'title' => 'One on One',
-                        'route_name' => 'meetings/one-on-one',
+                        'route_name' => 'meetings.one_on_one',
                         'icon' => 'fa fa-user-group',
                     ],
                 ],
@@ -695,21 +695,21 @@ class SidebarPanel
                 [
                     'employees' => [
                         'title' => 'Employees',
-                        'route_name' => 'organization/employees',
+                        'route_name' => 'organization.employees.list',
                         'icon' => 'fa fa-building-user',
                     ],
                 ],
                 [
                     'positions' => [
                         'title' => 'Positions',
-                        'route_name' => 'organization/positions',
+                        'route_name' => 'organization.positions',
                         'icon' => 'fa fa-id-card',
                     ],
                 ],
                 [
                     'teams' => [
                         'title' => 'Teams',
-                        'route_name' => 'organization/teams',
+                        'route_name' => 'organization.teams',
                         'icon' => 'fa fa-users-line',
                     ],
                 ],
