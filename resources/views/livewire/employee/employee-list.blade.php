@@ -1,5 +1,5 @@
 <div>
-    <x-page-title title="Employees" />
+    <x-general.page-title title="Employees" />
     <div class="grid grid-cols-1 gap-4 sm:gap-5 lg:gap-6">
         <!-- Users Table -->
         <div>
@@ -10,7 +10,7 @@
                         <label class="block">
                             <input
                                 wire:model.live="search"
-                                x-effect="isInputActive === true && $nextTick(() => { $el.focus()});"
+                                x-effect="isInputActive === true && $nextTick(() => { $el.focus()})"
                                 :class="isInputActive ? 'w-32 lg:w-48' : 'w-0'"
                                 class="form-input bg-transparent px-1 text-right transition-all duration-100 placeholder:text-slate-500 dark:placeholder:text-navy-200"
                                 placeholder="Search here..."
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="flex flex-col gap-1">
                                                 <x-general.link
-                                                    href="/employees/{{ $user->id }}"
+                                                    href="{{route('organization.employees.show', $user)}}"
                                                     wire:navigate
                                                     class="font-medium text-slate-600 dark:text-navy-100"
                                                 >

@@ -1,3 +1,6 @@
 <div>
-    {{-- Nothing in the world is as soft and yielding as water. --}}
+    <x-general.page-title title="Employee Info" :breadcrums="[
+        route('organization.employees.list') => 'Employees',
+        '#' => $user->name,
+]" />
 </div>

@@ -1,5 +1,5 @@
 <div>
-    <x-page-title title="One on One" />
+    <x-general.page-title title="One on One" />
     <div x-data="{activeTab:'tabHome'}" class="tabs flex flex-col">
         <div class="is-scrollbar-hidden overflow-x-auto">
             <div class="border-b-2 border-slate-150 dark:border-navy-500">
