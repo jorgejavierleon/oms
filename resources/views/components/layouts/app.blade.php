@@ -41,11 +41,8 @@
 
 </head>
 
-<body x-data x-bind="$store.global.documentBody"
+<body x-data
     class="navigation:sideblock is-sidebar-open">
-
-    <!-- App preloader-->
-    <x-app-preloader></x-app-preloader>
 
     <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>

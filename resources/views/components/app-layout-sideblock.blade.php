@@ -41,11 +41,8 @@
 
 </head>
 
-<body x-data x-bind="$store.global.documentBody"
+<body x-data
     class="navigation:sideblock @isset($isSidebarOpen) {{ $isSidebarOpen === 'true' ? 'is-sidebar-open' : '' }} @endisset @isset($isHeaderBlur) {{ $isHeaderBlur === 'true' ? 'is-header-blur' : '' }} @endisset  @isset($headerSticky) {{ $headerSticky === 'false' ? 'is-header-not-sticky' : '' }} @endisset">
-
-    <!-- App preloader-->
-    <x-app-preloader></x-app-preloader>
 
     <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
