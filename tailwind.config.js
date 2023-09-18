@@ -19,8 +19,10 @@ const navyColor = {
 const customColors = {
   navy: navyColor,
   "slate-150": "#E9EEF5",
-  primary: colors.indigo["600"],
-  "primary-focus": colors.indigo["700"],
+  primary: colors.indigo["500"],
+  "primary-focus": colors.indigo["600"],
+  //   primary: "#7367f0",
+  //   "primary-focus": "#685dd8",
   "secondary-light": "#ff57d8",
   secondary: "#F000B9",
   "secondary-focus": "#BD0090",

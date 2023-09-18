@@ -12,14 +12,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Str;
 
 /**
  * @mixin IdeHelperUser
  */
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Searchable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Searchable, InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -112,5 +114,19 @@ class User extends Authenticatable
             'name' => $this->name,
             'email' => $this->email,
         ];
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->useFallbackUrl('images/default-avatar.png')
+            ->useFallbackPath(public_path('images/default-avatar.png'))
+            ->singleFile();
+    }
+
+    public function getAvatarUrl(): string
+    {
+        return $this->getFirstMediaUrl('avatar');
     }
 }

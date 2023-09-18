@@ -680,6 +680,9 @@ class SidebarPanel
                     'one_on_one' => [
                         'title' => 'One on One',
                         'route_name' => 'meetings.one_on_one',
+                        'routes' => [
+                            'meetings.one_on_one',
+                        ],
                         'icon' => 'fa fa-user-group',
                     ],
                 ],
@@ -696,6 +699,10 @@ class SidebarPanel
                     'employees' => [
                         'title' => 'Employees',
                         'route_name' => 'organization.employees.list',
+                        'routes' => [
+                            'organization.employees.list',
+                            'organization.employees.show'
+                        ],
                         'icon' => 'fa fa-building-user',
                     ],
                 ],
@@ -703,6 +710,9 @@ class SidebarPanel
                     'positions' => [
                         'title' => 'Positions',
                         'route_name' => 'organization.positions',
+                        'routes' => [
+                            'organization.positions',
+                        ],
                         'icon' => 'fa fa-id-card',
                     ],
                 ],
@@ -710,6 +720,9 @@ class SidebarPanel
                     'teams' => [
                         'title' => 'Teams',
                         'route_name' => 'organization.teams',
+                        'routes' => [
+                            'organization.teams',
+                        ],
                         'icon' => 'fa fa-users-line',
                     ],
                 ],
@@ -722,12 +735,6 @@ class SidebarPanel
         return [
             self::meetings(),
             self::organization(),
-            self::dashboards(),
-            self::apps(),
-            self::layouts(),
-            self::forms(),
-            self::components(),
-            self::elements(),
         ];
     }
 }
