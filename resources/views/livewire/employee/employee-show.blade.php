@@ -85,34 +85,58 @@
                     </div>
                 </div>
                 <x-general.divider  class="my-6"/>
+                {{-- User Details --}}
                 <div>
                     <p class="pb-4 uppercase text-slate-400 dark:text-navy-300">
                         Details
                     </p>
-                    <dl>
-                        <div class="px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6">Full name</dt>
-                            <dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">Margot Foster</dd>
-                        </div>
-                        <div class="px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6">Full name</dt>
-                            <dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">Margot Foster</dd>
-                        </div>
-                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
-                        </div>
-                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
-                        </div>
-                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
-                        </div>
-                    </dl>
+                    <ul class="space-y-3">
+                        <li>
+                            <span class="font-medium text-slate-600">Trigram: </span>
+                            <span>{{$user->trigram}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">Full name: </span>
+                            <span>{{$user->name}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">Email: </span>
+                            <span>{{$user->email}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">Phone: </span>
+                            <span>{{$user->phone}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">Birthdate: </span>
+                            <span>{{$user->birthdate}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">Country: </span>
+                            <span>{{$user->country}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">City: </span>
+                            <span>{{$user->city}}</span>
+                        </li>
+                        <li>
+                            <span class="font-medium text-slate-600">Address: </span>
+                            <span>{{$user->address}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <x-general.divider  class="my-6"/>
+                {{-- Buttons --}}
+                <div x-data class="flex justify-center gap-3">
+                    <x-button.primary
+                        @click="$dispatch('edit-employee')"
+                    >
+                        Edit
+                    </x-button.primary>
+                    <x-button.error-soft>Suspended</x-button.error-soft>
                 </div>
             </div>
         </div>
     </div>
+    <livewire:employee.employee-edit :user="$user" />
 </div>
