@@ -125,9 +125,8 @@
                         </li>
                     </ul>
                 </div>
-                <x-general.divider  class="my-6"/>
                 {{-- Buttons --}}
-                <div x-data class="flex justify-center gap-3">
+                <div x-data class="pt-8 flex justify-center gap-3">
                     <x-button.primary
                         @click="$dispatch('edit-employee')"
                     >

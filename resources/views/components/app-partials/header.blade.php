@@ -31,8 +31,8 @@
                 <template x-if="$store.breakpoints.smAndUp">
                     <div class="flex" x-data="usePopper({ placement: 'bottom-end', offset: 12 })" @click.outside="if(isShowPopper) isShowPopper = false">
                         <div class="relative mr-4 flex h-8">
-                            <input placeholder="Search here..."
-                                class="form-input peer h-full rounded-full bg-slate-150 px-4 pl-9 text-xs+ text-slate-800 ring-primary/50 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:text-navy-100 dark:placeholder-navy-300 dark:ring-accent/50 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
+                            <input placeholder="Search here AQui..."
+                                class="lineone-form-input peer h-full rounded-full bg-slate-150 px-4 pl-9 text-xs+ text-slate-800 ring-primary/50 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:text-navy-100 dark:placeholder-navy-300 dark:ring-accent/50 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
                                 :class="isShowPopper ? 'w-80' : 'w-60'" @focus="isShowPopper= true" type="text"
                                 x-ref="popperRef" />
                             <div

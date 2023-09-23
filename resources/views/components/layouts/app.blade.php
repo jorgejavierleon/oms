@@ -16,6 +16,7 @@
     </title>
 
     @livewireStyles
+    @filamentStyles
 
     <!-- CSS & JS Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -71,6 +72,7 @@
     <div id="x-teleport-target"></div>
 
     @livewireScriptConfig
+    @filamentScripts
 
     <script>
         window.addEventListener("DOMContentLoaded", () => Livewire.start());

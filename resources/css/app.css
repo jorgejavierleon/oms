@@ -8,4 +8,5 @@
 
 @import "./pages.css";
 @import "highlight.js/styles/atom-one-dark.css"; /* Just for demo purpose only for highlighting code */
+@import "./filament-custom.css";
 

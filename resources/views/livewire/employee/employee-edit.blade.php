@@ -57,52 +57,23 @@
                 <h3 class="text-xl text-center font-medium text-slate-700 dark:text-navy-100">
                     Edit Employee Information
                 </h3>
-                <div class="px-4 py-4 sm:px-5">
-                    <div class="mt-4 space-y-4">
-                        <label class="block">
-                            <span>Choose category :</span>
-                            <select
-                                class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
-                            >
-                                <option>Laravel</option>
-                                <option>Node JS</option>
-                                <option>Django</option>
-                                <option>Other</option>
-                            </select>
-                        </label>
-                        <label class="block">
-                            <span>Description:</span>
-                            <textarea
-                                rows="4"
-                                placeholder=" Enter Text"
-                                class="form-textarea mt-1.5 w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                            ></textarea>
-                        </label>
-                        <label class="block">
-                            <span>Website Address:</span>
-                            <input
-                                class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                placeholder="URL Address"
-                                type="text"
-                            />
-                        </label>
-                        <label class="inline-flex items-center space-x-2">
-                            <input
-                                class="form-switch is-outline h-5 w-10 rounded-full border border-slate-400/70 bg-transparent before:rounded-full before:bg-slate-300 checked:border-primary checked:before:bg-primary dark:border-navy-400 dark:before:bg-navy-300 dark:checked:border-accent dark:checked:before:bg-accent"
-                                type="checkbox"
-                            />
-                            <span>Public pin</span>
-                        </label>
-                        <div class="space-x-2 text-right">
-                            <x-button.outlined @click="showModal = false">
-                                Cancel
-                            </x-button.outlined>
-                            <x-button.primary @click="showModal = false">
-                                Save
-                            </x-button.primary>
+                {{-- Body --}}
+                <form wire:submit="edit">
+                    <div class="px-4 py-4 sm:px-5">
+                        <div class="mt-4 space-y-4">
+                            {{ $this->form }}
+                            <div class="space-x-2 pt-8 text-right">
+                                <x-button.outlined @click="showModal = false">
+                                    Cancel
+                                </x-button.outlined>
+                                <x-button.primary type="submit">
+                                    Save
+                                </x-button.primary>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
             </div>
         </div>
     </template>
