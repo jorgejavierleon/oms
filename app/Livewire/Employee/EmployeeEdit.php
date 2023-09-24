@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Employee;
 
+use App\Models\Position;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -30,6 +33,14 @@ class EmployeeEdit extends Component implements HasForms
     {
         return $form
             ->schema([
+                Grid::make(4)->schema([
+                    TextInput::make('trigram')
+                        ->required()
+                        ->autocomplete('off')
+                        ->columnSpan(1),
+                    Toggle::make('is_active')
+                        ->columnSpan(1)->inline(false),
+                ]),
                 Grid::make(2)->schema([
                     TextInput::make('name')
                         ->required()
@@ -37,6 +48,9 @@ class EmployeeEdit extends Component implements HasForms
                     TextInput::make('email')
                         ->required()
                         ->autocomplete('off'),
+                    Select::make('position')
+                        ->options(Position::all()->pluck('name', 'id'))
+                        ->searchable()
                 ]),
             ])
             ->statePath('data');
