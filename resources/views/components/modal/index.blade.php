@@ -56,10 +56,10 @@
                 </div>
                 {{ $title }}
                 <div class="px-4 py-4 sm:px-5">
-                    <div class="mt-4 space-y-4">
+                    <form wire:submit="submit" class="mt-4 space-y-4">
                         {{ $body }}
                         {{ $footer}}
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

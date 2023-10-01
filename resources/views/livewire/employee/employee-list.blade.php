@@ -90,11 +90,11 @@
                                     </x-table.td>
                                     <x-table.td>
                                         <div class="flex gap-4 items-center font-light">
-                                            <x-general.link href="#">
+                                            <x-general.link
+                                                href="{{route('organization.employees.show', $user)}}"
+                                                wire:navigate
+                                            >
                                                 <x-heroicon-o-magnifying-glass />
-                                            </x-general.link>
-                                            <x-general.link href="#">
-                                                <x-heroicon-o-pencil-square />
                                             </x-general.link>
                                         </div>
                                     </x-table.td>
