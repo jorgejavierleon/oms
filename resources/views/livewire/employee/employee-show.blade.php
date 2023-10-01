@@ -86,7 +86,7 @@
                 {{-- Buttons --}}
                 <div x-data class="flex justify-center gap-3">
                     <x-button.primary
-                        @click="$dispatch('edit-employee')"
+                        href="{{route('organization.employees.edit', $user)}}"
                     >
                         Edit
                     </x-button.primary>
@@ -95,5 +95,4 @@
             </div>
         </div>
     </div>
-    <livewire:employee.employee-edit :employee="$user" />
 </div>

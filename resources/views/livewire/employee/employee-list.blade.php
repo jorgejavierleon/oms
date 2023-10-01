@@ -96,6 +96,11 @@
                                             >
                                                 <x-heroicon-o-magnifying-glass />
                                             </x-general.link>
+                                            <x-general.link
+                                                href="{{route('organization.employees.edit', $user)}}"
+                                            >
+                                                <x-heroicon-o-pencil-square />
+                                            </x-general.link>
                                         </div>
                                     </x-table.td>
                                 </tr>

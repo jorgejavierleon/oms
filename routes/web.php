@@ -163,6 +163,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/meetings/one-on-one', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('meetings.one_on_one');
     Route::get('/organization/employees', \App\Livewire\Employee\EmployeeList::class)->name('organization.employees.list');
     Route::get('/organization/employees/{user}', \App\Livewire\Employee\EmployeeShow::class)->name('organization.employees.show');
+    Route::get('/organization/employees/{user}/edit', \App\Livewire\Employee\EmployeeEdit::class)->name('organization.employees.edit');
     Route::get('/organization/positions', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization.positions');
     Route::get('/organization/teams', \App\Livewire\OneOnOne\ListOneOnOne::class)->name('organization.teams');
 });

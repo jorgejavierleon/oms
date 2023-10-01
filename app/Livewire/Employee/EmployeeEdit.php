@@ -10,10 +10,12 @@ use Livewire\Component;
 class EmployeeEdit extends Component
 {
     public EmployeeForm $form;
+    public User $user;
 
-    public function mount(User $employee): void
+    public function mount(User $user): void
     {
-        $this->form->setEmployee($employee);
+        $this->form->setEmployee($user);
+        $this->user = $user;
     }
 
     public function render(): View
@@ -25,5 +27,10 @@ class EmployeeEdit extends Component
     {
         $this->form->update();
         $this->dispatch('employee-updated');
+    }
+
+    public function cancel(): void
+    {
+        $this->form->setEmployee($this->user);
     }
 }
