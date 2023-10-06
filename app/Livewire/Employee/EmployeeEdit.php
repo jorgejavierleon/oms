@@ -6,6 +6,7 @@ use App\Livewire\Forms\EmployeeForm;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class EmployeeEdit extends Component
 {
@@ -32,5 +33,6 @@ class EmployeeEdit extends Component
     public function cancel(): void
     {
         $this->form->setEmployee($this->user);
+        Toaster::success('Employee edit cancelled');
     }
 }

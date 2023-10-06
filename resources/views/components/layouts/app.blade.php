@@ -70,6 +70,7 @@
 -->
     <div id="x-teleport-target"></div>
 
+
     @livewireScriptConfig
 
     <script>
@@ -80,6 +81,7 @@
         {{ $script }}
     @endisset
 
+    <x-toaster-hub />
 </body>
 
 </html>

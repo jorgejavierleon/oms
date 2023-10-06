@@ -85,6 +85,9 @@ import inputMask from "./directives/inputMask";
 import notification from "./magics/notification";
 import clipboard from "./magics/clipboard";
 
+// livewire toaster
+import '../../vendor/masmerise/livewire-toaster/resources/js';
+
 // Register HTML, XML language for highlight.js
 // Just for demo purpose only for highlighting code
 hljs.registerLanguage("xml", xml);
@@ -124,3 +127,4 @@ document.addEventListener("alpine:init", () => {
     Alpine.data("usePopper", usePopper);
     Alpine.data("accordionItem", accordionItem);
 });
+
