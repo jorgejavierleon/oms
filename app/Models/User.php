@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Str;
 
 /**
@@ -22,6 +23,8 @@ use Str;
 class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Searchable, InteractsWithMedia;
+
+    const AVATAR_MEDIA_COLLECTION = 'avatar';
 
     protected $guarded = [];
 
@@ -119,7 +122,7 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('avatar')
+            ->addMediaCollection(self::AVATAR_MEDIA_COLLECTION)
             ->useFallbackUrl('images/default-avatar.png')
             ->useFallbackPath(public_path('images/default-avatar.png'))
             ->singleFile();
@@ -127,6 +130,14 @@ class User extends Authenticatable implements HasMedia
 
     public function getAvatarUrl(): string
     {
-        return $this->getFirstMediaUrl('avatar');
+        return $this->getFirstMediaUrl(self::AVATAR_MEDIA_COLLECTION, 'thumb');
+
+    }
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(368)
+            ->height(232)
+            ->sharpen(10);
     }
 }

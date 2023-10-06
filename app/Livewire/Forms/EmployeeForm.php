@@ -3,8 +3,10 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Rule;
 use Livewire\Form;
+use Masmerise\Toaster\Toaster;
 
 class EmployeeForm extends Form
 {
@@ -18,6 +20,9 @@ class EmployeeForm extends Form
 
     #[Rule('required|email')]
     public ?string $email = '';
+
+    #[Rule('nullable|image|max:1024')] // 1MB Max
+    public $avatar;
 
     public ?string $phone = '';
 
@@ -49,11 +54,27 @@ class EmployeeForm extends Form
         $this->emergency_contact_phone = $employee->emergency_contact_phone;
         $this->birthdate = $employee->birthdate;
         $this->contract_renewal_at = $employee->contract_renewal_at;
+        $this->avatar = null;
     }
 
     public function update(): void
     {
         $this->validate();
-        $this->employee->update($this->except('employee'));
+        $this->employee->update($this->except(['employee', 'avatar']));
+        if ($this->avatar) {
+            $this->updateAvatar();
+        }
+    }
+
+    protected function updateAvatar(): void
+    {
+        try {
+            $this->employee->addMedia($this->avatar->getRealPath())
+                ->toMediaCollection(User::AVATAR_MEDIA_COLLECTION);
+            $this->avatar = null;
+        } catch (\Exception $e) {
+            Toaster::error('Error uploading avatar');
+            Log::error($e->getMessage());
+        }
     }
 }
