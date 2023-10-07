@@ -701,7 +701,8 @@ class SidebarPanel
                         'route_name' => 'organization.employees.list',
                         'routes' => [
                             'organization.employees.list',
-                            'organization.employees.show'
+                            'organization.employees.show',
+                            'organization.employees.edit',
                         ],
                         'icon' => 'fluentui-people-team-24',
                     ],
