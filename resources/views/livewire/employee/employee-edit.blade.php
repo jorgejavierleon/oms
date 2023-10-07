@@ -57,6 +57,132 @@
         <div class="col-span-12 md:col-span-8">
             <div class="card p-6 ">
                 {{-- User Form --}}
+                <div x-data="{activeTab:'tabProfile'}" class="tabs flex flex-col">
+                    <div class="is-scrollbar-hidden overflow-x-auto">
+                        <div class="border-b-2 border-slate-150 dark:border-navy-500">
+                            <div class="tabs-list -mb-0.5 flex space-x-6">
+                                <button
+                                    @click="activeTab = 'tabProfile'"
+                                    :class="activeTab === 'tabProfile' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
+                                    class="btn shrink-0 space-x-2 rounded-none border-b-2 px-3 py-2 font-medium"
+                                >
+                                    @svg('fluentui-person-24-o')
+                                    <span>Profile</span>
+                                </button>
+                                <button
+                                    @click="activeTab = 'tabOrganization'"
+                                    :class="activeTab === 'tabOrganization' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
+                                    class="btn shrink-0 space-x-2 rounded-none border-b-2 px-3 py-2 font-medium"
+                                >
+                                    @svg('fluentui-organization-24-o')
+                                    <span> Messages </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content pt-4">
+                        <div
+                            x-show="activeTab === 'tabHome'"
+                            x-transition:enter="transition-all duration-500 easy-in-out"
+                            x-transition:enter-start="opacity-0 [transform:translate3d(1rem,0,0)]"
+                            x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
+                        >
+                            <div>
+                                <p>
+                                    Pellentesque pulvinar, sapien eget fermentum sodales, felis lacus
+                                    viverra magna, id pulvinar odio metus non enim. Ut id augue
+                                    interdum, ultrices felis eu, tincidunt libero.
+                                </p>
+                                <div class="flex space-x-2 pt-3">
+                                    <a
+                                        href="#"
+                                        class="tag rounded-full border border-primary text-primary dark:border-accent-light dark:text-accent-light"
+                                    >
+                                        Tag 1
+                                    </a>
+                                    <a
+                                        href="#"
+                                        class="tag rounded-full border border-primary text-primary dark:border-accent-light dark:text-accent-light"
+                                    >
+                                        Tag 2
+                                    </a>
+                                </div>
+
+                                <p class="pt-3 text-xs text-slate-400 dark:text-navy-300">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    dolore non atque?
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            x-show="activeTab === 'tabProfile'"
+                            x-transition:enter="transition-all duration-500 easy-in-out"
+                            x-transition:enter-start="opacity-0 [transform:translate3d(1rem,0,0)]"
+                            x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
+                        >
+                            <div>
+                                <p>
+                                    Cras iaculis ipsum quis lectus faucibus, in mattis nulla molestie.
+                                    Vestibulum vel tristique libero. Morbi vulputate odio at viverra
+                                    sodales. Curabitur accumsan justo eu libero porta ultrices vitae eu
+                                    leo.
+                                </p>
+                                <div class="flex space-x-2 pt-3">
+                                    <a
+                                        href="#"
+                                        class="tag rounded-full border border-primary text-primary dark:border-accent-light dark:text-accent-light"
+                                    >
+                                        Tag 1
+                                    </a>
+                                    <a
+                                        href="#"
+                                        class="tag rounded-full border border-primary text-primary dark:border-accent-light dark:text-accent-light"
+                                    >
+                                        Tag 2
+                                    </a>
+                                </div>
+
+                                <p class="pt-3 text-xs text-slate-400 dark:text-navy-300">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    dolore non atque?
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            x-show="activeTab === 'tabMessages'"
+                            x-transition:enter="transition-all duration-500 easy-in-out"
+                            x-transition:enter-start="opacity-0 [transform:translate3d(1rem,0,0)]"
+                            x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
+                        >
+                            <div>
+                                <p>
+                                    Etiam nec ante eget lacus vulputate egestas non iaculis tellus.
+                                    Suspendisse tempus ex in tortor venenatis malesuada. Aenean
+                                    consequat dui vitae nibh lobortis condimentum. Duis vel risus est.
+                                </p>
+                                <div class="flex space-x-2 pt-3">
+                                    <a
+                                        href="#"
+                                        class="tag rounded-full border border-primary text-primary dark:border-accent-light dark:text-accent-light"
+                                    >
+                                        Tag 1
+                                    </a>
+                                    <a
+                                        href="#"
+                                        class="tag rounded-full border border-primary text-primary dark:border-accent-light dark:text-accent-light"
+                                    >
+                                        Tag 2
+                                    </a>
+                                </div>
+
+                                <p class="pt-3 text-xs text-slate-400 dark:text-navy-300">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    dolore non atque?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <form wire:submit="submit" >
                     <div class="mt-4 space-y-4">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">

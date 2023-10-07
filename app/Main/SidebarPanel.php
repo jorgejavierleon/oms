@@ -683,7 +683,7 @@ class SidebarPanel
                         'routes' => [
                             'meetings.one_on_one',
                         ],
-                        'icon' => 'fa fa-user-group',
+                        'icon' => 'fluentui-people-24',
                     ],
                 ],
             ],
@@ -703,7 +703,7 @@ class SidebarPanel
                             'organization.employees.list',
                             'organization.employees.show'
                         ],
-                        'icon' => 'fa fa-building-user',
+                        'icon' => 'fluentui-people-team-24',
                     ],
                 ],
                 [
@@ -713,7 +713,7 @@ class SidebarPanel
                         'routes' => [
                             'organization.positions',
                         ],
-                        'icon' => 'fa fa-id-card',
+                        'icon' => 'fluentui-organization-24',
                     ],
                 ],
                 [
@@ -723,7 +723,7 @@ class SidebarPanel
                         'routes' => [
                             'organization.teams',
                         ],
-                        'icon' => 'fa fa-users-line',
+                        'icon' => 'fluentui-people-audience-24',
                     ],
                 ],
             ],

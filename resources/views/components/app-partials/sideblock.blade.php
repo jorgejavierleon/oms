@@ -69,7 +69,7 @@
                                         <a href="{{ ($menu['route_name'] === $pageName) ? 'javascript:void(0)' : route($menu['route_name']) }}"
                                            class="flex items-center gap-2 rounded-md opacity-80 font-medium bg-gradient-to-l from-indigo-400 to-indigo-600 px-4 py-2 tracking-wide text-white outline-none transition-all">
                                             @isset($menu['icon'])
-                                                <i class="{{ $menu['icon'] }}"></i>
+                                                @svg($menu['icon'])
                                             @endisset
                                             {{ $menu['title'] }}
                                         </a>
@@ -79,7 +79,7 @@
                                         <a href="{{ route($menu['route_name']) }}"
                                            class="flex items-center gap-2 rounded-md px-4 py-2 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600">
                                             @isset($menu['icon'])
-                                                <i class="{{ $menu['icon'] }}"></i>
+                                                @svg($menu['icon'])
                                             @endisset
                                             {{ $menu['title'] }}
                                         </a>
