@@ -49,8 +49,8 @@
                                         <div class="flex items-center gap-3">
                                             <div class="avatar flex">
                                                 <img
-                                                    class="rounded-full"
-                                                    src="{{asset('images/100x100.png')}}"
+                                                    class="mask is-squircle"
+                                                    src="{{url($user->getAvatarUrl())}}"
                                                     alt="avatar"
                                                 />
                                             </div>

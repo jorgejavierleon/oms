@@ -14,7 +14,7 @@
                         @if($form->avatar)
                             <img class="rounded-lg" src="{{url($form->avatar->temporaryUrl())}}" alt="avatar" />
                         @else
-                            <img class="rounded-lg" src="{{$form->employee->getAvatarUrl()}}" alt="avatar" />
+                            <img class="rounded-lg" src="{{url($form->employee->getAvatarUrl())}}" alt="avatar" />
                         @endif
                         <div
                             class="absolute -bottom-2 -right-2 flex items-center justify-center rounded-full bg-white dark:bg-navy-700"
