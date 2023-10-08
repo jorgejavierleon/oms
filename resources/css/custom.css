@@ -1,0 +1,7 @@
+/* Variables */
+.ts-control {
+    font-weight: normal !important;
+}
+.ts-dropdown, .ts-control, .ts-control input {
+    @apply text-slate-500;
+}

@@ -1,8 +1,8 @@
 @props([
-    'type' => 'text',
     'label' => '',
     'placeholder' => '',
     'required' => false,
+    'multiple' => false,
 ])
 <div class="{{$attributes->get('class')}}">
     <label
@@ -10,19 +10,23 @@
         for="{{$attributes->whereStartsWith('wire:model')->first()}}"
     >
         <span class="text-slate-500/80">{{$label}}</span>
-        <input
+        <select
             id="{{$attributes->whereStartsWith('wire:model')->first()}}"
             {{$attributes->whereStartsWith('wire:model')}}
-            type="{{$type}}"
             {{$required ? 'required' : ''}}"
+            @if($multiple)
+                multiple
+            @endif
             @error($attributes->whereStartsWith('wire:model')->first())
-                class="form-input mt-1.5 w-full rounded-lg border border-error bg-transparent px-3 py-2 placeholder:text-slate-400/70"
+                class="mt-1.5 w-full border border-error bg-transparent px-3 py-2 placeholder:text-slate-400/70"
             @else
-                class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+            class="text-slate-500 mt-1.5 w-full placeholder:text-slate-400/70"
             @enderror
-
             placeholder="{{$placeholder}}"
-        />
+            x-init="$el._tom = new Tom($el,{create: true,sortField: {field: 'text',direction: 'asc'}})"
+        >
+            {{$slot}}
+        </select>
     </label>
     @error($attributes->whereStartsWith('wire:model')->first())
         <span class="text-xs text-error">{{$message}}</span>

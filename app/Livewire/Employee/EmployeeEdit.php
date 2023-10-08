@@ -3,7 +3,10 @@
 namespace App\Livewire\Employee;
 
 use App\Livewire\Forms\EmployeeForm;
+use App\Models\Position;
+use App\Models\Team;
 use App\Models\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Livewire\Attributes\Rule;
@@ -19,13 +22,16 @@ class EmployeeEdit extends Component
 
     public User $user;
 
-//    #[Rule('image|max:1024')] // 1MB Max
-//    public $avatar;
+    public Collection $positions;
+
+    public Collection $teams;
 
     public function mount(User $user): void
     {
         $this->form->setEmployee($user);
         $this->user = $user;
+        $this->positions = Position::all();
+        $this->teams = Team::all();
     }
 
     public function render(): View

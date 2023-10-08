@@ -8,7 +8,7 @@
         class="block"
         for="{{$attributes->whereStartsWith('wire:model')->first()}}"
     >
-        <span>{{$label}}</span>
+        <span class="text-slate-500/80">{{$label}}</span>
         <label class="relative flex">
             <input
                 x-init="$el._x_flatpickr = flatpickr($el)"

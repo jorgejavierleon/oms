@@ -61,8 +61,18 @@
                             Organization Information
                         </x-general.section-title>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <x-input.datepicker wire:model="form.birthdate" label="Date of Birth"/>
-                            <x-input.datepicker wire:model="form.contract_renewal_at" label="Contract Renewal at"/>
+                            <x-input.select wire:model="form.position_id" label="Position">
+                                <option value="">Job Title</option>
+                                @foreach($positions as $position)
+                                    <option value="{{$position->id}}">{{$position->name}}</option>
+                                @endforeach
+                            </x-input.select>
+                            <x-input.select wire:model="form.team_id" label="Teams" multiple>
+                                <option value="">Teams</option>
+                                @foreach($teams as $team)
+                                    <option value="{{$team->id}}">{{$team->name}}</option>
+                                @endforeach
+                            </x-input.select>
                         </div>
                     </div>
                     {{-- Address --}}

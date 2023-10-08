@@ -40,6 +40,8 @@ class EmployeeForm extends Form
 
     public ?string $contract_renewal_at = '';
 
+    public array $teams = [];
+
     public function setEmployee(User $employee): void
     {
         $this->employee = $employee;
@@ -55,6 +57,7 @@ class EmployeeForm extends Form
         $this->birthdate = $employee->birthdate;
         $this->contract_renewal_at = $employee->contract_renewal_at;
         $this->avatar = null;
+        $this->teams = $employee->teams->only('id')->toArray();
     }
 
     public function update(): void
