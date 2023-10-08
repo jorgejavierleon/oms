@@ -26,12 +26,18 @@ class EmployeeEdit extends Component
 
     public Collection $teams;
 
+    public Collection $managers;
+
+    public Collection $directReports;
+
     public function mount(User $user): void
     {
         $this->form->setEmployee($user);
         $this->user = $user;
-        $this->positions = Position::all();
-        $this->teams = Team::all();
+        $this->positions = Position::all()->pluck('name', 'id');
+        $this->teams = Team::all()->pluck('name', 'id');
+        $this->managers = $this->getPosibleManagers();
+        $this->directReports = $this->getPosibleDirectReports();
     }
 
     public function render(): View
@@ -43,11 +49,23 @@ class EmployeeEdit extends Component
     {
         $this->form->update();
         Toaster::success('Information updated');
+        $this->managers = $this->getPosibleManagers();
+        $this->directReports = $this->getPosibleDirectReports();
         $this->dispatch('employee-updated');
     }
 
     public function cancel(): void
     {
         $this->form->setEmployee($this->user);
+    }
+
+    protected function getPosibleManagers(): Collection
+    {
+        return User::posibleManagers($this->user)->select('id', 'name')->get()->pluck('name', 'id');
+    }
+
+    protected function getPosibleDirectReports(): Collection
+    {
+        return User::posibleDirectReports($this->user)->select('id', 'name')->get()->pluck('name', 'id');
     }
 }

@@ -44,7 +44,12 @@ class EmployeeForm extends Form
 
     public array $teams = [];
 
-    public null|int|string $position_id = null;
+    public ?int $position_id = null;
+
+    public array $managers = [];
+
+    public array $directReports = [];
+
 
     public function setEmployee(User $employee): void
     {
@@ -63,6 +68,8 @@ class EmployeeForm extends Form
         $this->avatar = null;
         $this->teams = $employee->teams()->pluck('teams.id')->toArray();
         $this->position_id = $employee->position_id;
+        $this->managers = $employee->managers()->pluck('users.id')->toArray();
+        $this->directReports = $employee->directReports()->pluck('users.id')->toArray();
     }
 
     /**
@@ -90,8 +97,16 @@ class EmployeeForm extends Form
 
     protected function updateEmployee(): void
     {
-        $this->employee->update($this->except(['employee', 'avatar', 'teams']));
+        $this->employee->update($this->except([
+            'employee',
+            'avatar',
+            'teams',
+            'managers',
+            'directReports',
+        ]));
         $this->employee->teams()->sync($this->teams);
+        $this->employee->managers()->sync($this->managers);
+        $this->employee->directReports()->sync($this->directReports);
         if ($this->avatar) {
             $this->updateAvatar();
         }

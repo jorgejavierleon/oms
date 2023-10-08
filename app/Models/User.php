@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Str;
+use Illuminate\Support\Collection;
 
 /**
  * @mixin IdeHelperUser
@@ -139,5 +141,27 @@ class User extends Authenticatable implements HasMedia
             ->width(368)
             ->height(232)
             ->sharpen(10);
+    }
+
+    /**
+     * Scope a query to only include posible managers.
+     */
+    public function scopePosibleManagers(Builder $query, User $user): void
+    {
+        $query->where('id', '!=', $user->id)
+            ->whereDoesntHave('managers', function (Builder $query) use ($user) {
+                $query->where('manager_id', $user->id);
+            });
+    }
+
+    /**
+     * Scope a query to only include posible managers.
+     */
+    public function scopePosibleDirectReports(Builder $query, User $user): void
+    {
+        $query->where('id', '!=', $user->id)
+            ->whereDoesntHave('directReports', function (Builder $query) use ($user) {
+                $query->where('employee_id', $user->id);
+            });
     }
 }

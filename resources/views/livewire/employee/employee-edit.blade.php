@@ -63,13 +63,25 @@
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <x-input.select wire:model="form.position_id" label="Position">
                                 <option value=""></option>
-                                @foreach($positions as $position)
-                                    <option value="{{$position->id}}">{{$position->name}}</option>
+                                @foreach($positions as $id => $position)
+                                    <option value="{{$id}}">{{$position}}</option>
                                 @endforeach
                             </x-input.select>
                             <x-input.select wire:model="form.teams" label="Teams" multiple>
-                                @foreach($teams as $team)
-                                    <option value="{{$team->id}}">{{$team->name}}</option>
+                                @foreach($teams as $id => $team)
+                                    <option value="{{$id}}">{{$team}}</option>
+                                @endforeach
+                            </x-input.select>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <x-input.select wire:model="form.managers" label="Managers" multiple>
+                                @foreach($managers as $id => $manager)
+                                    <option value="{{$id}}">{{$manager}}</option>
+                                @endforeach
+                            </x-input.select>
+                            <x-input.select wire:model="form.directReports" label="Direct Reports" multiple>
+                                @foreach($directReports as $id => $directReport)
+                                    <option value="{{$id}}">{{$directReport}}</option>
                                 @endforeach
                             </x-input.select>
                         </div>
