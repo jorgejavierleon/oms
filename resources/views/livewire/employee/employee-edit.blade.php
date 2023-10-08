@@ -8,7 +8,7 @@
     <form wire:submit.prevent="submit">
         <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
             <div class="col-span-12 md:col-span-4">
-                <div class="card p-8 ">
+                <div class="card p-6 ">
                     {{-- User avatar --}}
                     <div class="flex grow flex-col items-center pb-5 sm:px-5">
                         <div class="avatar h-24 w-24 ">
@@ -62,13 +62,12 @@
                         </x-general.section-title>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <x-input.select wire:model="form.position_id" label="Position">
-                                <option value="">Job Title</option>
+                                <option value=""></option>
                                 @foreach($positions as $position)
                                     <option value="{{$position->id}}">{{$position->name}}</option>
                                 @endforeach
                             </x-input.select>
-                            <x-input.select wire:model="form.team_id" label="Teams" multiple>
-                                <option value="">Teams</option>
+                            <x-input.select wire:model="form.teams" label="Teams" multiple>
                                 @foreach($teams as $team)
                                     <option value="{{$team->id}}">{{$team->name}}</option>
                                 @endforeach

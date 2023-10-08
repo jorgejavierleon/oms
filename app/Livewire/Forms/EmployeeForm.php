@@ -3,10 +3,12 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Rule;
 use Livewire\Form;
 use Masmerise\Toaster\Toaster;
+use Throwable;
 
 class EmployeeForm extends Form
 {
@@ -42,6 +44,8 @@ class EmployeeForm extends Form
 
     public array $teams = [];
 
+    public null|int|string $position_id = null;
+
     public function setEmployee(User $employee): void
     {
         $this->employee = $employee;
@@ -57,16 +61,19 @@ class EmployeeForm extends Form
         $this->birthdate = $employee->birthdate;
         $this->contract_renewal_at = $employee->contract_renewal_at;
         $this->avatar = null;
-        $this->teams = $employee->teams->only('id')->toArray();
+        $this->teams = $employee->teams()->pluck('teams.id')->toArray();
+        $this->position_id = $employee->position_id;
     }
 
+    /**
+     * @throws Throwable
+     */
     public function update(): void
     {
         $this->validate();
-        $this->employee->update($this->except(['employee', 'avatar']));
-        if ($this->avatar) {
-            $this->updateAvatar();
-        }
+        DB::transaction(function () {
+            $this->updateEmployee();
+        });
     }
 
     protected function updateAvatar(): void
@@ -78,6 +85,15 @@ class EmployeeForm extends Form
         } catch (\Exception $e) {
             Toaster::error('Error uploading avatar');
             Log::error($e->getMessage());
+        }
+    }
+
+    protected function updateEmployee(): void
+    {
+        $this->employee->update($this->except(['employee', 'avatar', 'teams']));
+        $this->employee->teams()->sync($this->teams);
+        if ($this->avatar) {
+            $this->updateAvatar();
         }
     }
 }

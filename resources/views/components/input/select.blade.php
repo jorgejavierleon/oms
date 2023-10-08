@@ -23,7 +23,11 @@
             class="text-slate-500 mt-1.5 w-full placeholder:text-slate-400/70"
             @enderror
             placeholder="{{$placeholder}}"
-            x-init="$el._tom = new Tom($el,{create: true,sortField: {field: 'text',direction: 'asc'}})"
+            x-init="$el._tom = new Tom($el,{
+                plugins: [{{$multiple ? '\'remove_button\'' : ''}}],
+                create: false,
+                sortField: {field: 'text',direction: 'asc'}
+            })"
         >
             {{$slot}}
         </select>
