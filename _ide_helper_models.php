@@ -502,7 +502,7 @@ namespace App\Models{
  * @property-read int|null $job_listings_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ActionItem> $actionItems
  * @property-read int|null $action_items_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $directReports
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $directReporters
  * @property-read int|null $direct_reports_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $managers
  * @property-read int|null $managers_count

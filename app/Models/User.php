@@ -67,7 +67,7 @@ class User extends Authenticatable implements HasMedia
         return $this->managers->contains($user);
     }
 
-    public function directReports(): BelongsToMany
+    public function directReporters(): BelongsToMany
     {
         return $this->belongsToMany(
             User::class,
@@ -157,10 +157,10 @@ class User extends Authenticatable implements HasMedia
     /**
      * Scope a query to only include posible managers.
      */
-    public function scopePosibleDirectReports(Builder $query, User $user): void
+    public function scopePosibleDirectReporters(Builder $query, User $user): void
     {
         $query->where('id', '!=', $user->id)
-            ->whereDoesntHave('directReports', function (Builder $query) use ($user) {
+            ->whereDoesntHave('directReporters', function (Builder $query) use ($user) {
                 $query->where('employee_id', $user->id);
             });
     }

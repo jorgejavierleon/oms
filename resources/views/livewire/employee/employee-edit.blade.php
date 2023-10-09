@@ -79,8 +79,8 @@
                                     <option value="{{$id}}">{{$manager}}</option>
                                 @endforeach
                             </x-input.select>
-                            <x-input.select wire:model="form.directReports" label="Direct Reports" multiple>
-                                @foreach($directReports as $id => $directReport)
+                            <x-input.select wire:model="form.directReporters" label="Direct Reports" multiple>
+                                @foreach($directReporters as $id => $directReport)
                                     <option value="{{$id}}">{{$directReport}}</option>
                                 @endforeach
                             </x-input.select>
