@@ -21,7 +21,7 @@
                             @click="isInputActive = !isInputActive"
                             class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <x-heroicon-o-magnifying-glass />
+                            @svg('fluentui-search-24-o')
                         </button>
                     </div>
                 </div>
@@ -44,6 +44,7 @@
                             @foreach($users as $user)
                                 <tr
                                     class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500"
+                                    wire:key="user-{{$user->id}}"
                                 >
                                     <x-table.td>
                                         <div class="flex items-center gap-3">
@@ -94,12 +95,12 @@
                                                 href="{{route('organization.employees.show', $user)}}"
                                                 wire:navigate
                                             >
-                                                <x-heroicon-o-magnifying-glass />
+                                                @svg('fluentui-search-24-o')
                                             </x-general.link>
                                             <x-general.link
                                                 href="{{route('organization.employees.edit', $user)}}"
                                             >
-                                                <x-heroicon-o-pencil-square />
+                                                @svg('fluentui-edit-24-o', 'h-5 w-5')
                                             </x-general.link>
                                         </div>
                                     </x-table.td>

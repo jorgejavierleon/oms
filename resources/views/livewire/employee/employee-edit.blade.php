@@ -64,24 +64,24 @@
                             <x-input.select wire:model="form.position_id" label="Position">
                                 <option value=""></option>
                                 @foreach($positions as $id => $position)
-                                    <option value="{{$id}}">{{$position}}</option>
+                                    <option wire:key="{{$id}}" value="{{$id}}">{{$position}}</option>
                                 @endforeach
                             </x-input.select>
                             <x-input.select wire:model="form.teams" label="Teams" multiple>
                                 @foreach($teams as $id => $team)
-                                    <option value="{{$id}}">{{$team}}</option>
+                                    <option wire:key="{{$id}} "value="{{$id}}">{{$team}}</option>
                                 @endforeach
                             </x-input.select>
                         </div>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <x-input.select wire:model="form.managers" label="Managers" multiple>
                                 @foreach($managers as $id => $manager)
-                                    <option value="{{$id}}">{{$manager}}</option>
+                                    <option wire:key="{{$id}}" value="{{$id}}">{{$manager}}</option>
                                 @endforeach
                             </x-input.select>
                             <x-input.select wire:model="form.directReporters" label="Direct Reports" multiple>
                                 @foreach($directReporters as $id => $directReport)
-                                    <option value="{{$id}}">{{$directReport}}</option>
+                                    <option wire:key="{{$id}}" value="{{$id}}">{{$directReport}}</option>
                                 @endforeach
                             </x-input.select>
                         </div>

@@ -158,6 +158,9 @@
                                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                         <dt class="font-medium text-slate-600">Managers</dt>
                                         <dd class="mt-1 sm:col-span-2 sm:mt-0">
+                                            @if(!$user->managers->count())
+                                                <span class="text-slate-400">N/A</span>
+                                            @endif
                                             @foreach($user->managers as $manager)
                                                 <x-general.link
                                                     type="primary"
