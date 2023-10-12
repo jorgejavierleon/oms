@@ -126,15 +126,37 @@ class User extends Authenticatable implements HasMedia
         $this
             ->addMediaCollection(self::AVATAR_MEDIA_COLLECTION)
             ->useFallbackUrl('images/default-avatar.png')
-            ->useFallbackPath(public_path('images/default-avatar.png'))
             ->singleFile();
     }
 
     public function getAvatarUrl(): string
     {
         return $this->getFirstMediaUrl(self::AVATAR_MEDIA_COLLECTION, 'thumb');
+    }
+
+    /**
+     * Without fallback.
+     */
+    public function getAvatarUrlOrNull(): ?string
+    {
+        $media = $this->getFirstMedia(self::AVATAR_MEDIA_COLLECTION);
+
+        return $media?->getUrl('thumb');
 
     }
+
+    public function getInitials(): string
+    {
+        $nameParts = explode(' ', $this->name);
+        $initials = '';
+        foreach ($nameParts as $namePart) {
+            $initials .= substr($namePart, 0, 1);
+        }
+        $initials = substr($initials, 0, 2);
+
+        return $initials;
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')

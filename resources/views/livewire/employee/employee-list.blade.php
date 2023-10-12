@@ -48,13 +48,7 @@
                                 >
                                     <x-table.td>
                                         <div class="flex items-center gap-3">
-                                            <div class="avatar flex">
-                                                <img
-                                                    class="mask is-squircle"
-                                                    src="{{url($user->getAvatarUrl())}}"
-                                                    alt="avatar"
-                                                />
-                                            </div>
+                                            <x-general.avatar :user="$user" />
                                             <div class="flex flex-col gap-1">
                                                 <x-general.link
                                                     href="{{route('organization.employees.show', $user)}}"

@@ -17,13 +17,7 @@
     @foreach($participants as $participant)
         <div class="card items-center justify-between lg:flex-row">
             <div class="flex flex-col items-center p-4 text-center sm:p-5 lg:flex-row lg:space-x-4 lg:text-left">
-                <div class="avatar h-18 w-18 lg:h-12 lg:w-12">
-                    <img
-                        class="rounded-full"
-                        src="{{url($participant['user']->getAvatarUrl())}}"
-                        alt="avatar"
-                    />
-                </div>
+                <x-general.avatar :user="$participant['user']" class="h-18 w-18 lg:h-12 lg:w-12" />
                 <div class="mt-2 lg:mt-0">
                     <div class="flex items-center justify-center space-x-4">
                         <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
