@@ -15,7 +15,7 @@
         />
     @else
         <div
-            class="is-initial bg-primary text-base uppercase text-white dark:bg-accent {{ $avatarClass }}"
+            class="is-initial bg-slate-200 text-base uppercase text-slate-600 dark:bg-navy-500 dark:text-navy-100 {{ $avatarClass }}"
         >
             {{$user->getInitials()}}
         </div>

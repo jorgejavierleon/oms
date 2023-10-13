@@ -10,12 +10,12 @@
         </div>
     </div>
 @endif
-<x-general.section-title icon="fluentui-calendar-clock-24-o" class="lg:text-lg pb-4">
+<x-general.section-title icon="fluentui-calendar-clock-24-o" class="pb-4">
     Upcoming
 </x-general.section-title>
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
     @foreach($participants as $participant)
-        <div class="card items-center justify-between lg:flex-row">
+        <div class="card items-center justify-between lg:flex-row space-x-4">
             <div class="flex flex-col items-center p-4 text-center sm:p-5 lg:flex-row lg:space-x-4 lg:text-left">
                 <x-general.avatar :user="$participant['user']" class="h-18 w-18 lg:h-12 lg:w-12" />
                 <div class="mt-2 lg:mt-0">
@@ -27,12 +27,24 @@
                             Planning
                         </div>
                     </div>
-                    <p class="text-xs+">React Developer</p>
+                    @if($participant['previousOneOnOne'])
+                        <x-general.link
+                            href="{{route('organization.one-on-ones.show', $participant['previousOneOnOne'])}}"
+                            wire:navigate
+                        >
+                            <span class="text-xs+">
+                                Last meeting: {{$participant['previousOneOnOne']->completed_at->format('M d, Y')}}
+                            </span>
+                        </x-general.link>
+                    @else
+                        <span class="text-xs+">
+                            First one on one
+                        </span>
+                    @endif
                 </div>
-                <button
-                    class="btn mt-4 rounded-full border border-slate-200 font-medium text-primary hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:text-accent-light dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90 lg:hidden">
-                    Follow
-                </button>
+            </div>
+            <div class="p-4">
+                <x-button.primary>Participate</x-button.primary>
             </div>
         </div>
     @endforeach
