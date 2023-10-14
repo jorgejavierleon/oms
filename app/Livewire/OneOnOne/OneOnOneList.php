@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class ListOneOnOne extends Component
+class OneOnOneList extends Component
 {
     public string $title = 'One on One';
     private OneOnOneRepository $oneOnOneRepository;
@@ -20,7 +20,7 @@ class ListOneOnOne extends Component
 
     public function render(): View
     {
-        return view('livewire.one-on-one.list-one-on-one')
+        return view('livewire.one-on-one.one-on-one-list')
             ->title($this->title)
             ->with([
                 'managers' => $this->getParticipantsInfo(Auth::user()->managers),
