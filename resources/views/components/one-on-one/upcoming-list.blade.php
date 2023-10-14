@@ -10,9 +10,6 @@
         </div>
     </div>
 @endif
-<x-general.section-title icon="fluentui-calendar-clock-24-o" class="pb-4">
-    Upcoming
-</x-general.section-title>
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
     @foreach($participants as $participant)
         <div class="card items-center justify-between lg:flex-row space-x-4">
@@ -44,7 +41,9 @@
                 </div>
             </div>
             <div class="p-4">
-                <x-button.primary>Participate</x-button.primary>
+                <x-button.icon>
+                    @svg('fluentui-arrow-enter-20')
+                </x-button.icon>
             </div>
         </div>
     @endforeach
