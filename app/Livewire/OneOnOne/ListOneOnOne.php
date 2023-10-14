@@ -24,6 +24,7 @@ class ListOneOnOne extends Component
             ->title($this->title)
             ->with([
                 'managers' => $this->getParticipantsInfo(Auth::user()->managers),
+                'reporters' => $this->getParticipantsInfo(Auth::user()->directReporters),
             ]);
     }
 
