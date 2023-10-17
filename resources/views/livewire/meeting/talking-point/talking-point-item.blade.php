@@ -1,0 +1,3 @@
+<div>
+    {{ $talkingPoint->description }}
+</div>

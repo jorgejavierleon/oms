@@ -161,6 +161,7 @@ Route::middleware('auth')->group(function () {
 
     Route::redirect('/', '/meetings/one-on-one')->name('index');
     Route::get('/meetings/one-on-one', \App\Livewire\OneOnOne\OneOnOneList::class)->name('meetings.one_on_one');
+    Route::get('/meetings/one-on-one/{oneOnOne}/edit', \App\Livewire\OneOnOne\OneOnOneEdit::class)->name('meetings.one_on_one.edit');
     Route::get('/organization/employees', \App\Livewire\Employee\EmployeeList::class)->name('organization.employees.list');
     Route::get('/organization/employees/{user}', \App\Livewire\Employee\EmployeeShow::class)->name('organization.employees.show');
     Route::get('/organization/employees/{user}/edit', \App\Livewire\Employee\EmployeeEdit::class)->name('organization.employees.edit');

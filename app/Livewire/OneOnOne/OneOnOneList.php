@@ -2,6 +2,7 @@
 
 namespace App\Livewire\OneOnOne;
 
+use App\Models\User;
 use App\Repositories\OneOnOneRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
@@ -28,6 +29,12 @@ class OneOnOneList extends Component
             ]);
     }
 
+    public function redirectToExistingOrNewOneOnOne(User $interviewee): void
+    {
+        $oneOnOne = $this->oneOnOneRepository->firstOrCreate(Auth::user(), $interviewee);
+        $this->redirect(route('meetings.one_on_one.edit', $oneOnOne->id));
+    }
+
     protected function getParticipantsInfo(Collection $users): Collection
     {
         // add the last one on one date to the manager info
@@ -41,5 +48,6 @@ class OneOnOneList extends Component
             ];
         });
     }
+
 
 }

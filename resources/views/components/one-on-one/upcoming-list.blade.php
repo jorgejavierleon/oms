@@ -41,7 +41,9 @@
                 </div>
             </div>
             <div class="p-4">
-                <x-button.icon>
+                <x-button.icon
+                    wire:click="redirectToExistingOrNewOneOnOne({{ $participant['user']->id }})"
+                >
                     @svg('fluentui-arrow-enter-20')
                 </x-button.icon>
             </div>

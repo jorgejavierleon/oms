@@ -1,5 +1,6 @@
 @props([
-    'type' => 'default'
+    'type' => 'default',
+    'icon' => null,
 ])
 <a
     @if ($type === 'primary')
@@ -8,5 +9,10 @@
         {{ $attributes->merge(['class' => 'transition hover:text-primary focus:text-primary']) }}
     @endif
 >
-    {{ $slot }}
+    <div class="flex items-center">
+        @if($icon)
+            @svg($icon, 'h-5 w-5 mr-1')
+        @endif
+        {{ $slot }}
+    </div>
 </a>
