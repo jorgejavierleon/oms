@@ -13,6 +13,7 @@
         <input
             id="{{$attributes->whereStartsWith('wire:model')->first()}}"
             {{$attributes->whereStartsWith('wire:model')}}
+            {{$attributes->whereStartsWith('x-ref')}}
             type="{{$type}}"
             {{$required ? 'required' : ''}}"
             @error($attributes->whereStartsWith('wire:model')->first())
