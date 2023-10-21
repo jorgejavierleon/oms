@@ -16,7 +16,7 @@
     <button
         {{ $attributes }}
         type="{{ $type }}"
-        class="{{ $classes }}"
+        {{ $attributes->merge(['class' => $classes]) }}
     >
         {{ $slot }}
     </button>
