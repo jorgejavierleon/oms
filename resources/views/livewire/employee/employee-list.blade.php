@@ -84,19 +84,27 @@
                                         </label>
                                     </x-table.td>
                                     <x-table.td>
-                                        <div class="flex gap-4 items-center font-light">
-                                            <x-general.link
-                                                href="{{route('organization.employees.show', $user)}}"
-                                                wire:navigate
-                                            >
-                                                @svg('fluentui-search-24-o')
-                                            </x-general.link>
-                                            <x-general.link
-                                                href="{{route('organization.employees.edit', $user)}}"
-                                            >
-                                                @svg('fluentui-edit-24-o', 'h-5 w-5')
-                                            </x-general.link>
-                                        </div>
+                                        <x-dropdown>
+                                            <ul>
+                                                <li>
+                                                    <x-dropdown.link
+                                                        href="{{route('organization.employees.show', $user)}}"
+                                                        wire:navigate
+                                                    >
+                                                        @svg('fluentui-search-24-o')
+                                                        View
+                                                    </x-dropdown.link>
+                                                </li>
+                                                <li>
+                                                    <x-dropdown.link
+                                                        href="{{route('organization.employees.edit', $user)}}"
+                                                    >
+                                                        @svg('fluentui-edit-24-o', 'h-5 w-5')
+                                                        Edit
+                                                    </x-dropdown.link>
+                                                </li>
+                                            </ul>
+                                        </x-dropdown>
                                     </x-table.td>
                                 </tr>
                             @endforeach

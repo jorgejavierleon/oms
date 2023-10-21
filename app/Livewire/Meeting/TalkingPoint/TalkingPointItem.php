@@ -28,21 +28,13 @@ class TalkingPointItem extends Component
     public function editTalkingPoint(): void
     {
         $this->talkingPoint->description = $this->description;
-        $this->saveTalkingPoint();
+        $this->talkingPoint->save();
         $this->openEditForm = false;
     }
 
-    public function cancel(): void
+    public function cancelEditTalkingPoint(): void
     {
         $this->openEditForm = false;
         $this->description = $this->talkingPoint->description;
     }
-
-    private function saveTalkingPoint(): void
-    {
-        $this->talkingPoint->save();
-        $this->talkingPoint->refresh();
-    }
-
-
 }

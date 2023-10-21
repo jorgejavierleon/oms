@@ -40,19 +40,31 @@
                 </x-button.icon>
                 <button
                     type="button"
-                    wire:click="cancel"
+                    wire:click="cancelEditTalkingPoint"
                     x-tooltip="'Cancel'"
                 >
                     @svg('fluentui-arrow-reset-20-o')
                 </button>
             </div>
-            <div >
-                <x-general.link
-                    type="primary"
-                    href="#"
-                    icon="fluentui-more-vertical-24-o"
-                >
-                </x-general.link>
+            <div>
+                <x-dropdown>
+                    <ul>
+                        <li>
+                            <x-dropdown.link>
+                                @svg('fluentui-notepad-person-20-o')
+                                Add private note
+                            </x-dropdown.link>
+                        </li>
+                        <li>
+                            <x-dropdown.link
+                                wire:click="$dispatch('delete-talking-point', { talkingPointId: {{ $talkingPoint->id }} })"
+                            >
+                                @svg('fluentui-delete-24-o')
+                                Delete talking point
+                            </x-dropdown.link>
+                        </li>
+                    </ul>
+                </x-dropdown>
             </div>
         </div>
     </div>

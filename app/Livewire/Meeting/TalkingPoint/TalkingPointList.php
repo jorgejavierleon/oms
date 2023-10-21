@@ -5,6 +5,7 @@ namespace App\Livewire\Meeting\TalkingPoint;
 use App\Models\Meeting;
 use App\Models\TalkingPoint;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class TalkingPointList extends Component
@@ -36,4 +37,9 @@ class TalkingPointList extends Component
         $this->meeting->refresh();
     }
 
+    #[On('delete-talking-point')]
+    public function deleteTalkingPoint(int $talkingPointId): void
+    {
+        TalkingPoint::find($talkingPointId)->delete();
+    }
 }
