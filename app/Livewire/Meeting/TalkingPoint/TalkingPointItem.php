@@ -10,6 +10,8 @@ class TalkingPointItem extends Component
 {
     public TalkingPoint $talkingPoint;
 
+    public bool $talkingPointIsChecked = false;
+
     public bool $openEditForm = false;
 
     public string $description = '';
@@ -18,6 +20,7 @@ class TalkingPointItem extends Component
     {
         $this->talkingPoint = $talkingPoint;
         $this->description = $talkingPoint->description;
+        $this->talkingPointIsChecked = $talkingPoint->is_checked;
     }
 
     public function render(): View
@@ -30,6 +33,12 @@ class TalkingPointItem extends Component
         $this->talkingPoint->description = $this->description;
         $this->talkingPoint->save();
         $this->openEditForm = false;
+    }
+
+    public function toggleTalkingPointIsChecked(): void
+    {
+        $this->talkingPoint->is_checked = $this->talkingPointIsChecked;
+        $this->talkingPoint->save();
     }
 
     public function cancelEditTalkingPoint(): void
