@@ -25,6 +25,7 @@
                     <x-general.link
                         type="primary"
                         href="#"
+                        @click="$dispatch('show-drawer', { drawerId: 'suggestions-drawer' })"
                     >
                         <div class="flex items-center">
                             @svg('fluentui-lightbulb-24-o', 'h-5 w-5 mr-1')
@@ -38,4 +39,15 @@
             </section>
         </div>
     </div>
+    {{-- Suggestions Slide Over --}}
+    <x-drawer drawerId="suggestions-drawer">
+        <x-slot:title>
+            <h2 class="text-xl font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100" id="slide-over-title">
+                Suggestions
+            </h2>
+        </x-slot:title>
+        <x-slot:body>
+            <x-one-on-one.talking-point-suggestions />
+        </x-slot:body>
+    </x-drawer>
 </div>
