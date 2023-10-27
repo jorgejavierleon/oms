@@ -32,6 +32,11 @@ class OneOnOneEdit extends Component
         return OneOnOneSuggestion::inRandomOrder()->limit(self::NUMBER_OF_SUGGESTIONS)->get();
     }
 
+    public function refreshSuggestions(): void
+    {
+        $this->suggestions = $this->getSuggestions();
+    }
+
     public function addTalkingPointSuggestion(OneOnOneSuggestion $suggestion): void
     {
         // TODO validate and extract logic to repo
