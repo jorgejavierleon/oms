@@ -1,6 +1,6 @@
 <div>
     <div class="flex flex-col space-y-2">
-        @foreach($meeting->talkingPoints as $talkingPoint)
+        @foreach($talkingPoints as $talkingPoint)
             <livewire:meeting.talking-point.talking-point-item
                 :talkingPoint="$talkingPoint"
                 :wire:key="$talkingPoint->id"

@@ -37,6 +37,16 @@
                     :meeting="$oneOnOne"
                 />
             </section>
+            <section class="pt-4">
+                <div class="pb-4 pt-2 flex items-center justify-between">
+                    <x-general.section-title>
+                        Action Items
+                    </x-general.section-title>
+                </div>
+                <livewire:meeting.action.action-list
+                    :meeting="$oneOnOne"
+                />
+            </section>
         </div>
     </div>
     {{-- Suggestions Slide Over --}}

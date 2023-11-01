@@ -2,7 +2,7 @@
     x-data="{showModal:false}"
     {{ $attributes }}
 >
-    <template x-teleport="body">
+    <template x-teleport="#x-teleport-target">
         <div
             class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
             x-show="showModal"
@@ -21,7 +21,7 @@
                 x-transition:leave-end="opacity-0"
             ></div>
             <div
-                class="relative w-full max-w-3xl origin-top rounded-lg bg-white transition-all duration-300 dark:bg-navy-700"
+                class="relative sm:w-full sm:max-w-xl origin-top rounded-lg bg-white transition-all duration-300 dark:bg-navy-700"
                 x-show="showModal"
                 x-transition:enter="easy-out"
                 x-transition:enter-start="opacity-0 scale-95"
@@ -32,10 +32,11 @@
             >
                 {{-- Header --}}
                 <div
-                    class="flex justify-end rounded-t-lg px-4 py-3 sm:px-5"
+                    class="flex justify-between items-center rounded-t-lg px-4 py-3 sm:px-5"
                 >
+                    {{ $title }}
                     <button
-                        @click="showModal = !showModal"
+                        @click="showModal = false"
                         class="btn -mr-1.5 h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                     >
                         <svg
@@ -54,12 +55,8 @@
                         </svg>
                     </button>
                 </div>
-                {{ $title }}
-                <div class="px-4 py-4 sm:px-5">
-                    <form wire:submit="submit" class="mt-4 space-y-4">
-                        {{ $body }}
-                        {{ $footer}}
-                    </form>
+                <div class="px-4 pb-4 sm:px-5">
+                    {{ $body }}
                 </div>
             </div>
         </div>

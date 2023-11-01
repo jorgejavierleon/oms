@@ -9,7 +9,7 @@
         class="block"
         for="{{$attributes->whereStartsWith('wire:model')->first()}}"
     >
-        <span class="text-slate-500/80">{{$label}}</span>
+        <span>{{$label}}</span>
         <select
             id="{{$attributes->whereStartsWith('wire:model')->first()}}"
             {{$attributes->whereStartsWith('wire:model')}}

@@ -55,7 +55,7 @@
                     <ul>
                         <li>
                             <x-dropdown.link>
-                                @svg('fluentui-notepad-person-20-o')
+                                @svg('fluentui-document-lock-24-o')
                                 Add private note
                             </x-dropdown.link>
                         </li>

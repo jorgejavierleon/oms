@@ -160,17 +160,20 @@
                                         <dd class="mt-1 sm:col-span-2 sm:mt-0">
                                             @if(!$user->managers->count())
                                                 <span class="text-slate-400">N/A</span>
+                                            @else
+                                                <div class="flex space-x-1">
+                                                    @foreach($user->managers as $manager)
+                                                        <x-general.link
+                                                                type="primary"
+                                                                href="{{route('organization.employees.show', $manager)}}"
+                                                                wire:navigate
+                                                        >
+                                                            {{$manager->name}}
+                                                        </x-general.link>
+                                                        {{ $loop->last ? '' : ',' }}
+                                                    @endforeach
+                                                </div>
                                             @endif
-                                            @foreach($user->managers as $manager)
-                                                <x-general.link
-                                                    type="primary"
-                                                    href="{{route('organization.employees.show', $manager)}}"
-                                                    wire:navigate
-                                                >
-                                                    {{$manager->name}}
-                                                </x-general.link>
-                                                {{ $loop->last ? '' : ',' }}
-                                            @endforeach
                                         </dd>
                                     </div>
                                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -178,17 +181,20 @@
                                         <dd class="mt-1 sm:col-span-2 sm:mt-0">
                                             @if(!$user->directReporters->count())
                                                 <span class="text-slate-400">N/A</span>
+                                            @else
+                                                <div class="flex space-x-1">
+                                                    @foreach($user->directReporters as $directReporter)
+                                                        <x-general.link
+                                                                type="primary"
+                                                                href="{{route('organization.employees.show', $directReporter)}}"
+                                                                wire:navigate
+                                                        >
+                                                            {{$directReporter->name}}
+                                                        </x-general.link>
+                                                        {{ $loop->last ? '' : ',' }}
+                                                    @endforeach
+                                                </div>
                                             @endif
-                                            @foreach($user->directReporters as $directReporter)
-                                                <x-general.link
-                                                    type="primary"
-                                                    href="{{route('organization.employees.show', $directReporter)}}"
-                                                    wire:navigate
-                                                >
-                                                    {{$directReporter->name}}
-                                                </x-general.link>
-                                                {{ $loop->last ? '' : ',' }}
-                                            @endforeach
                                         </dd>
                                     </div>
                                 </dl>
