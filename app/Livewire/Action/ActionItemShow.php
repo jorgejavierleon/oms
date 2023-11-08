@@ -10,7 +10,7 @@ class ActionItemShow extends Component
 {
     public ActionItemModel $actionItem;
 
-    public string $actionItemDescription = '';
+    public ?string $actionItemDescription = null;
 
     public bool $actionItemIsCompleted = false;
 

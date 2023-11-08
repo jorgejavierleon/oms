@@ -17,10 +17,6 @@ class ActionItemForm extends Form
 
     public ?string $description = null;
 
-    public function store(): void
-    {
-        ActionItem::create($this->all());
-    }
 
     public function setActionItem(ActionItem $actionItem): void
     {
@@ -29,5 +25,4 @@ class ActionItemForm extends Form
         $this->due_date = $actionItem->due_date;
         $this->description = $actionItem->description;
     }
-
 }

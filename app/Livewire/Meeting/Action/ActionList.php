@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Meeting\Action;
 
+use App\Models\ActionItem;
 use App\Models\Meeting;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ActionList extends Component
@@ -20,5 +22,17 @@ class ActionList extends Component
         return view('livewire.meeting.action.action-list')->with([
             'actionItems' => $this->meeting->actionItems,
         ]);
+    }
+
+    #[On('action-item-added')]
+    public function refreshMeeting(): void
+    {
+        $this->meeting->refresh();
+    }
+
+    #[On('delete-action-item')]
+    public function deleteActionItem(int $actionItemId): void
+    {
+        ActionItem::find($actionItemId)->delete();
     }
 }

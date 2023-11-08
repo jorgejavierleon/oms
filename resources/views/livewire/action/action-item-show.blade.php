@@ -6,7 +6,7 @@
                     type="checkbox"
                     wire:model="actionItemIsCompleted"
                     wire:click="toggleActionItemIsCompleted"
-                    class="form-checkbox is-basic h-6 w-6 border-slate-400/70 checked:bg-primary checked:border-primary hover:border-primary focus:border-primary dark:border-navy-400 dark:checked:bg-accent dark:checked:border-accent dark:hover:border-accent dark:focus:border-accent"
+                    class="form-checkbox is-basic h-6 w-6 rounded border-slate-400/70 checked:bg-primary checked:border-primary hover:border-primary focus:border-primary dark:border-navy-400 dark:checked:bg-accent dark:checked:border-accent dark:hover:border-accent dark:focus:border-accent"
                 />
             </label>
             <div
@@ -27,10 +27,10 @@
                         </li>
                         <li>
                             <x-dropdown.link
-                                wire:click="$dispatch('delete-talking-point', { talkingPointId: {{ $talkingPoint->id }} })"
+                                wire:click="$dispatch('delete-action-item', { actionItemId: {{ $actionItem->id }} })"
                             >
                                 @svg('fluentui-delete-24-o')
-                                Delete talking point
+                                Delete action item
                             </x-dropdown.link>
                         </li>
                     </ul>

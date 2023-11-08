@@ -1,6 +1,6 @@
 <div>
     <div class="flex flex-col space-y-2">
-        @foreach($actionItems as $actionItem)
+        @foreach($meeting->actionItems as $actionItem)
             <livewire:action.action-item-show
                 :actionItem="$actionItem"
                 :wire:key="$actionItem->id"
@@ -18,5 +18,5 @@
             Add a new action item
         </x-general.link>
     </div>
-    <livewire:action.action-item-create />
+    <livewire:action.action-item-create :meeting="$meeting" />
 </div>
