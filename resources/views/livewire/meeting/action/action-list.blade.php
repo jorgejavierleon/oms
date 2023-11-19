@@ -3,7 +3,7 @@
         @foreach($meeting->actionItems as $actionItem)
             <livewire:action.action-item-show
                 :actionItem="$actionItem"
-                :wire:key="$actionItem->id"
+                :key="$actionItem->id"
                 :showOrigen="false"
             />
         @endforeach
@@ -13,10 +13,11 @@
             type="primary"
             href="#"
             icon="fluentui-add-24"
-            @click="$dispatch('action-item-create')"
+            @click="$dispatch('show-create-action-item')"
         >
             Add a new action item
         </x-general.link>
     </div>
-    <livewire:action.action-item-create :meeting="$meeting" />
+    {{-- Modals --}}
+    <livewire:action.action-item-upsert :meeting="$meeting" />
 </div>

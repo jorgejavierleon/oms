@@ -10,7 +10,8 @@
                 />
             </label>
             <div
-                class="grow p-2 rounded-md hover:bg-indigo-50 hover:cursor-pointer transition duration-300"
+                class="grow p-2 rounded-md hover:bg-indigo-50/50 hover:cursor-pointer transition duration-300"
+                wire:click="$dispatch('show-edit-action-item', { actionItemId: {{ $actionItem->id }} })"
             >
                 <h2 class="text-slate-700 line-clamp-1 dark:text-navy-100 ">
                     {{ $actionItem->title }}
@@ -20,16 +21,16 @@
                 <x-dropdown>
                     <ul>
                         <li>
-                            <x-dropdown.link>
-                                @svg('fluentui-document-lock-24-o')
-                                Add private note
+                            <x-dropdown.link
+                                @click="$dispatch('show-edit-action-item', { actionItemId: {{ $actionItem->id }} })"
+                            >
+                                @svg('fluentui-edit-24-o', 'w-5 h-5')
+                                Edit action item
                             </x-dropdown.link>
-                        </li>
-                        <li>
                             <x-dropdown.link
                                 wire:click="$dispatch('delete-action-item', { actionItemId: {{ $actionItem->id }} })"
                             >
-                                @svg('fluentui-delete-24-o')
+                                @svg('fluentui-delete-24-o', 'w-5 h-5')
                                 Delete action item
                             </x-dropdown.link>
                         </li>

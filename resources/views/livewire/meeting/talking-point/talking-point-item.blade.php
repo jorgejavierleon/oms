@@ -10,7 +10,7 @@
                 />
             </label>
             <div
-                class="grow p-2 rounded-md hover:bg-indigo-50 hover:cursor-pointer transition duration-300"
+                class="grow p-2 rounded-md hover:bg-indigo-50/50 hover:cursor-pointer transition duration-300"
                 @click="
                     openEditForm = ! openEditForm;
                     await $nextTick();

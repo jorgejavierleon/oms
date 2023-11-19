@@ -37,12 +37,6 @@ class ActionItemShow extends Component
         $this->dispatch('action-item-deleted');
     }
 
-    public function editActionItem(): void
-    {
-        $this->actionItem->description = $this->actionItemDescription;
-        $this->saveActionItem();
-    }
-
     public function toggleActionItemIsCompleted(): void
     {
         $this->actionItem->is_completed = $this->actionItemIsCompleted;

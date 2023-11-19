@@ -7,14 +7,18 @@ use App\Models\ActionItem;
 use App\Models\Meeting;
 use App\Models\User;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
-use Masmerise\Toaster\Toaster;
 
-class ActionItemCreate extends Component
+class ActionItemUpsert extends Component
 {
     public ActionItemForm $form;
 
-    public Meeting $meeting;
+    protected Meeting $meeting;
+
+    public bool $isEdit = false;
+
+    protected ?ActionItem $actionItem;
 
     public function mount(Meeting $meeting): void
     {
@@ -24,12 +28,24 @@ class ActionItemCreate extends Component
 
     public function render(): View
     {
-        return view('livewire.action.action-item-create')->with([
+        return view('livewire.action.action-item-upsert')->with([
             'responsables' => User::select('id', 'name')->get()->pluck('name', 'id')
         ]);
     }
 
     public function submit(): void
+    {
+        if ($this->isEdit) {
+            $this->update();
+        } else {
+            $this->create();
+        }
+
+        $this->dispatch('action-item-added');
+        $this->form->reset();
+    }
+
+    public function create(): void
     {
         $lastOrder = $this->meeting->actionItems->last()->order ?? 0;
         $actionItem = ActionItem::create([
@@ -44,9 +60,29 @@ class ActionItemCreate extends Component
                 'is_original' => true,
             ]
         );
+    }
 
+    public function update(): void
+    {
+    }
+
+    #[On('show-edit-action-item')]
+    public function setActionItemToEdit(int $actionItemId): void
+    {
+        $actionItem = ActionItem::findOrFail($actionItemId);
+        $this->actionItem = $actionItem;
+        $this->form->setActionItem($actionItem);
+        $this->isEdit = true;
+        // Show modal
+        $this->dispatch('open-action-item-upsert-modal');
+    }
+
+    #[On('show-create-action-item')]
+    public function setActionItemModalToCreate(): void
+    {
+        $this->isEdit = false;
         $this->form->reset();
-        $this->dispatch('action-item-added');
+        $this->dispatch('open-action-item-upsert-modal');
     }
 
     public function cancel(): void

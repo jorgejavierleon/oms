@@ -1,10 +1,10 @@
 <x-modal
-    @action-item-create.window="showModal = true"
-    x-on:action-item-created.window="showModal = false"
+    @open-action-item-upsert-modal.window="showModal = true"
+    @close-action-item-upsert-modal.window="showModal = false"
 >
     <x-slot name="title">
         <x-modal.title>
-            Create Action Item
+            {{$this->isEdit ? 'Edit' : 'Create' }} Action Item
         </x-modal.title>
     </x-slot>
     <x-slot name="body">
