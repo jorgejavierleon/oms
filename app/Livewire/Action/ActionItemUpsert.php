@@ -18,7 +18,7 @@ class ActionItemUpsert extends Component
 
     public bool $isEdit = false;
 
-    protected ?ActionItem $actionItem;
+    public ?ActionItem $actionItem;
 
     public function mount(Meeting $meeting): void
     {
@@ -39,9 +39,7 @@ class ActionItemUpsert extends Component
         } else {
             $this->create();
         }
-
-        $this->dispatch('action-item-added');
-        $this->form->reset();
+        $this->dispatch('close-action-item-upsert-modal');
     }
 
     public function create(): void
@@ -59,10 +57,13 @@ class ActionItemUpsert extends Component
                 'is_original' => true,
             ]
         );
+        $this->dispatch('action-item-created');
     }
 
     public function update(): void
     {
+        $this->actionItem->update($this->form->all());
+        $this->dispatch('action-item-updated');
     }
 
     #[On('show-edit-action-item')]

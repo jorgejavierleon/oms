@@ -4,6 +4,7 @@ namespace App\Livewire\Action;
 
 use Illuminate\View\View;
 use App\Models\ActionItem as ActionItemModel;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ActionItemShow extends Component
@@ -50,6 +51,7 @@ class ActionItemShow extends Component
         $this->refreshActionItem();
     }
 
+    #[On('action-item-updated')]
     public function refreshActionItem(): void
     {
         $this->actionItem->refresh();

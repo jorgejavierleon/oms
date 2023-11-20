@@ -24,7 +24,7 @@ class ActionList extends Component
         ]);
     }
 
-    #[On('action-item-added')]
+    #[On('action-item-created')]
     public function refreshMeeting(): void
     {
         $this->meeting->refresh();
