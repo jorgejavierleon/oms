@@ -8,7 +8,7 @@
         </x-modal.title>
     </x-slot>
     <x-slot name="body">
-        <form wire:submit="submit">
+        <form wire:submit="save">
             <div class="space-y-4">
                 <div class="grid sm:grid-cols-1">
                     <x-input.text wire:model="form.title" label="Title"/>

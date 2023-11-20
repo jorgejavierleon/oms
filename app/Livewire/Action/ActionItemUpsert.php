@@ -14,7 +14,7 @@ class ActionItemUpsert extends Component
 {
     public ActionItemForm $form;
 
-    protected Meeting $meeting;
+    public Meeting $meeting;
 
     public bool $isEdit = false;
 
@@ -23,7 +23,6 @@ class ActionItemUpsert extends Component
     public function mount(Meeting $meeting): void
     {
         $this->meeting = $meeting;
-        $this->form->responsable_id = auth()->id();
     }
 
     public function render(): View
@@ -33,7 +32,7 @@ class ActionItemUpsert extends Component
         ]);
     }
 
-    public function submit(): void
+    public function save(): void
     {
         if ($this->isEdit) {
             $this->update();
@@ -82,6 +81,7 @@ class ActionItemUpsert extends Component
     {
         $this->isEdit = false;
         $this->form->reset();
+        $this->form->responsable_id = auth()->id();
         $this->dispatch('open-action-item-upsert-modal');
     }
 
