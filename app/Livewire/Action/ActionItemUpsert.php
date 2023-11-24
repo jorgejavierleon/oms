@@ -44,26 +44,16 @@ class ActionItemUpsert extends Component
 
     public function create(): void
     {
-        $lastOrder = $this->meeting->actionItems->last()->order ?? 0;
-        $actionItem = ActionItem::create([
-            'title' => $this->form->title,
-            'description' => $this->form->description,
-            'responsable_id' => $this->form->responsable_id ?? auth()->id(),
-            'due_date' => $this->form->due_date,
-        ]);
-        $this->meeting->actionItems()->attach(
-            $actionItem, [
-                'order' => $lastOrder + 1,
-                'is_original' => true,
-            ]
-        );
-        $this->dispatch('action-item-created');
+        if ($this->form->createFromMeeting($this->meeting)) {
+            $this->dispatch('action-item-created');
+        }
     }
 
     public function update(): void
     {
-        $this->actionItem->update($this->form->all());
-        $this->dispatch('action-item-updated');
+        if ($this->form->update($this->actionItem)) {
+            $this->dispatch('action-item-updated');
+        }
     }
 
     #[On('show-edit-action-item')]

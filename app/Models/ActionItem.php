@@ -17,6 +17,10 @@ class ActionItem extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'due_date' => 'date',
+    ];
+
     public function responsable(): BelongsTo
     {
         return $this->belongsTo(User::class, 'responsable_id');
