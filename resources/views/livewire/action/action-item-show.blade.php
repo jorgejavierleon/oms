@@ -17,6 +17,26 @@
                     {{ $actionItem->title }}
                 </h2>
             </div>
+            <div
+                class="flex items-center space-x-4 cursor-pointer"
+                wire:click="$dispatch('show-edit-action-item', { actionItemId: {{ $actionItem->id }} })"
+            >
+                {{-- Due date --}}
+                @if($actionItem->due_date)
+                    <span @class([
+                    'text-xs',
+                    'text-error' => $actionItem->dueDateColor() === 'red',
+                    'text-warning' => $actionItem->dueDateColor() === 'yellow',
+                    ])>
+                        {{$actionItem->due_date?->format('D, M d')}}
+                    </span>
+                @endif
+                {{-- Responsable --}}
+                <div class="flex items-center">
+                    <x-general.avatar :user="$actionItem->responsable" class="h-7 w-7 ring-2 ring-white"/>
+                </div>
+            </div>
+
             <div>
                 <x-dropdown>
                     <ul>
