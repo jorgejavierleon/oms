@@ -16,7 +16,7 @@
                 </x-button.primary>
             </div>
             <x-general.divider />
-            {{-- Content --}}
+            {{-- Talkin Points --}}
             <section>
                 <div class="pb-4 pt-2 flex items-center justify-between">
                     <x-general.section-title>
@@ -37,6 +37,7 @@
                     :meeting="$oneOnOne"
                 />
             </section>
+            {{-- Actions --}}
             <section class="pt-4">
                 <div class="pb-4 pt-2 flex items-center justify-between">
                     <x-general.section-title>
@@ -44,6 +45,17 @@
                     </x-general.section-title>
                 </div>
                 <livewire:meeting.action.action-list
+                    :meeting="$oneOnOne"
+                />
+            </section>
+            {{-- Notes --}}
+            <section class="pt-4">
+                <div class="pb-4 pt-2 flex items-center justify-between">
+                    <x-general.section-title>
+                        Notes
+                    </x-general.section-title>
+                </div>
+                <livewire:meeting.note.note-list
                     :meeting="$oneOnOne"
                 />
             </section>
